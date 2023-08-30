@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
-import 'styles.dart';
+import '../utils/styles.dart';
 
 class MoviePresentationImageTitle extends StatelessWidget {
   const MoviePresentationImageTitle({
     super.key,
-    required this.movieBackDrop,
+    required this.moviePoster,
     required this.movieOriginalTitle,
   });
 
   static const double leftPaddingImageOriginalTitle = 30;
   static const double sizeofOriginalTitleBox = 200;
-  static const double borderRadiusBackDrop = 20;
-  static const double imageHeightBackDrop = 220;
+  static const double borderRadiusPoster = 20;
+  static const double imageHeightPoster = 220;
 
   static const int originalTitleMaxLines = 3;
 
-  final String movieBackDrop;
+  final String moviePoster;
   final String movieOriginalTitle;
 
   @override
@@ -27,12 +27,14 @@ class MoviePresentationImageTitle extends StatelessWidget {
           clipBehavior: Clip.hardEdge,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(
-              borderRadiusBackDrop,
+              borderRadiusPoster,
             ),
           ),
           child: Image(
-            image: AssetImage(movieBackDrop),
-            height: imageHeightBackDrop,
+            image: NetworkImage(
+              moviePoster,
+            ),
+            height: imageHeightPoster,
           ),
         ),
         SizedBox(

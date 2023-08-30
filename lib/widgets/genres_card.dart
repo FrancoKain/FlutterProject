@@ -1,30 +1,40 @@
 import 'package:flutter/material.dart';
-import 'styles.dart';
+
+import '../utils/styles.dart';
 
 class GenreCard extends StatelessWidget {
   const GenreCard({
     super.key,
     required this.borderRadiusGenreCard,
-    required this.paddingGenreSpace,
+    required this.sizeOfCard,
     required this.genre,
-    required this.genreText,
+    required this.genreColor,
   });
 
+  static const TextStyle genreText = TextStyle(
+    fontSize: MyAppStyles.genreFontSize,
+    color: Colors.white54,
+  );
+
+  final Color genreColor;
   final double borderRadiusGenreCard;
-  final double paddingGenreSpace;
+  final double sizeOfCard;
   final String genre;
-  final TextStyle genreText;
 
   @override
   Widget build(BuildContext context) {
     return Card(
       clipBehavior: Clip.hardEdge,
-      color: MyAppStyles.genreColor,
+      color: genreColor,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(borderRadiusGenreCard),
+        borderRadius: BorderRadius.circular(
+          borderRadiusGenreCard,
+        ),
       ),
       child: Padding(
-        padding: EdgeInsets.all(paddingGenreSpace),
+        padding: EdgeInsets.all(
+          sizeOfCard,
+        ),
         child: Text(
           genre,
           style: genreText,
