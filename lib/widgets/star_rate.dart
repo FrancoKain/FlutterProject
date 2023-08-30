@@ -16,7 +16,11 @@ class StarRate extends StatelessWidget {
 
   final Color starColor;
 
-  Icon starCreate(int starNumber, double rate, Color starColor) {
+  Icon starCreate(
+    int starNumber,
+    double rate,
+    Color starColor,
+  ) {
     rate = rate / 2;
     if (starNumber < rate.floor()) {
       return Icon(
@@ -24,7 +28,7 @@ class StarRate extends StatelessWidget {
         color: starColor,
       );
     } else {
-      if (rate > starNumber) {
+      if (rate.round() > starNumber && rate > starNumber) {
         return Icon(
           Icons.star_half,
           color: starColor,
@@ -48,7 +52,11 @@ class StarRate extends StatelessWidget {
       child: Row(
         children: [
           for (int starNumber = 0; starNumber < maxStars; starNumber++)
-            starCreate(starNumber, rate, starColor),
+            starCreate(
+              starNumber,
+              rate,
+              starColor,
+            ),
           Padding(
             padding: const EdgeInsets.only(
               left: paddingLeftBetweenStarsRate,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'styles.dart';
+import '../utils/styles.dart';
 
 class ButtonSection extends StatefulWidget {
   const ButtonSection({
@@ -16,7 +16,7 @@ class _ButtonSectionState extends State<ButtonSection> {
 
   static const String counterText = 'People who liked the movie: ';
 
-  static const double paddingBetweenCounterTextandButton = 15;
+  static const double paddingBetweenCounterTextAndButton = 15;
   static const double likeButtonSize = 50;
 
   void _incrementCounter() {
@@ -39,7 +39,7 @@ class _ButtonSectionState extends State<ButtonSection> {
           ),
           Padding(
             padding: const EdgeInsets.only(
-              top: paddingBetweenCounterTextandButton,
+              top: paddingBetweenCounterTextAndButton,
             ),
             child: Stack(
               children: [

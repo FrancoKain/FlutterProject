@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
-import 'styles.dart';
+import '../utils/styles.dart';
 
 class MovieHeader extends StatelessWidget {
   const MovieHeader({
     super.key,
     required this.movieTitle,
-    required this.moviePoster,
+    required this.movieBackDrop,
   });
 
-  final String moviePoster;
+  final String movieBackDrop;
   final String movieTitle;
+
+  final int headerTitleMaxLines = 1;
 
   static const double titleTextRadius = 10;
   static const double titleTextHeight = 50;
-  static const double borderRadiusImagePoster = 20;
+  static const double borderRadiusImageBackDrop = 20;
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +24,13 @@ class MovieHeader extends StatelessWidget {
       child: Stack(
         children: <Widget>[
           ClipRRect(
-            borderRadius: BorderRadius.circular(borderRadiusImagePoster),
+            borderRadius: BorderRadius.circular(
+              borderRadiusImageBackDrop,
+            ),
             child: Image(
-              image: AssetImage(moviePoster),
+              image: NetworkImage(
+                movieBackDrop,
+              ),
             ),
           ),
           Positioned.fill(
@@ -45,7 +51,9 @@ class MovieHeader extends StatelessWidget {
             height: titleTextHeight,
             decoration: const BoxDecoration(
               borderRadius: BorderRadius.vertical(
-                bottom: Radius.circular(titleTextRadius),
+                bottom: Radius.circular(
+                  titleTextRadius,
+                ),
               ),
               gradient: LinearGradient(
                 colors: [
@@ -60,6 +68,8 @@ class MovieHeader extends StatelessWidget {
               child: Text(
                 movieTitle,
                 style: MyAppStyles.titles,
+                maxLines: headerTitleMaxLines,
+                overflow: TextOverflow.clip,
               ),
             ),
           ),

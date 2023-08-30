@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
-import 'movie_presentation_image__and_title.dart';
+import '../utils/styles.dart';
+import 'movie_presentation_image_and_title.dart';
 import 'star_rate.dart';
-
-const Color starColor = Colors.yellow;
 
 class MoviePresentation extends StatelessWidget {
   const MoviePresentation({
     super.key,
-    required this.movieBackDrop,
+    required this.moviePoster,
     required this.movieOriginalTitle,
     required this.movieRate,
   });
 
-  final String movieBackDrop;
+  final String moviePoster;
   final String movieOriginalTitle;
   final double movieRate;
 
@@ -27,12 +26,12 @@ class MoviePresentation extends StatelessWidget {
       child: Column(
         children: [
           MoviePresentationImageTitle(
-            movieBackDrop: movieBackDrop,
+            moviePoster: moviePoster,
             movieOriginalTitle: movieOriginalTitle,
           ),
           StarRate(
             rate: movieRate,
-            starColor: starColor,
+            starColor: MyAppStyles.starColor,
           ),
         ],
       ),

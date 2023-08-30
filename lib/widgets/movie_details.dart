@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'styles.dart';
+import '../utils/styles.dart';
 
 class MovieDetails extends StatelessWidget {
-  MovieDetails({
+  const MovieDetails({
     super.key,
     required this.movieOverview,
   });
@@ -11,7 +11,7 @@ class MovieDetails extends StatelessWidget {
 
   static const String descriptionText = 'Description';
 
-  TextStyle descriptionTextStyle = const TextStyle(
+  static const TextStyle descriptionTextStyle = TextStyle(
     fontSize: MyAppStyles.fontText,
     color: Colors.white54,
   );
