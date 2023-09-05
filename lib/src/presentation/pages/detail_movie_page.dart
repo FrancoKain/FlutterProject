@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../models/genres.dart';
-import '../widgets/search_engine.dart';
-import '../utils/styles.dart';
+import '../../domain/models/genres.dart';
+import '../../presentation/widgets/search_engine.dart';
+import '../../core/utils/styles.dart';
 import '../widgets/button_section.dart';
-import '../models/movie.dart';
-import '../widgets/movie_details.dart';
-import '../widgets/movie_header.dart';
+import '../../domain/models/movie.dart';
+import '../../presentation/widgets/movie_details.dart';
+import '../../presentation/widgets/movie_header.dart';
 import '../widgets/movie_presentation.dart';
 import '../widgets/genres_details_page.dart';
 

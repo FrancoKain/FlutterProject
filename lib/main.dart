@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'pages/movie_list_page.dart';
-import 'utils/styles.dart';
+import 'src/presentation/pages/movie_list_page.dart';
+import 'src/core/utils/styles.dart';
 
 void main() {
   runApp(const MyApp());

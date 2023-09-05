@@ -1,5 +1,5 @@
-import 'models/genres.dart';
-import 'models/movie.dart';
+import 'genres.dart';
+import 'movie.dart';
 
 class LocalRepositoryResponse {
   final List<Movie> movies;

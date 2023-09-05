@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../models/genres.dart';
-import '../models/movie.dart';
+import '../../domain/models/genres.dart';
+import '../../domain/models/movie.dart';
 import '../pages/detail_movie_page.dart';
-import '../utils/styles.dart';
+import '../../core/utils/styles.dart';
 
 class ButtonToMovie extends StatelessWidget {
   const ButtonToMovie({super.key, required this.movie, required this.genres});

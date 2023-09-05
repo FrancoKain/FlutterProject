@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../utils/styles.dart';
+import '../../core/utils/styles.dart';
 
-class MovieImageFromMovieList extends StatelessWidget {
-  const MovieImageFromMovieList({
+class MovieListImage extends StatelessWidget {
+  const MovieListImage({
     super.key,
     required this.cardSize,
     required this.posterImage,

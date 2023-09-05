@@ -1,15 +1,15 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_project/models/genres.dart';
+import '../../domain/models/genres.dart';
 
 import 'genre_list_movie_list.dart';
-import '../models/movie.dart';
+import '../../domain/models/movie.dart';
 import 'star_rate.dart';
-import '../utils/styles.dart';
+import '../../core/utils/styles.dart';
 import 'button_to_movie.dart';
-import 'movie_image_from_movie_list.dart';
+import 'movie_list_image.dart';
 
-class MovieInformationFromMovieList extends StatelessWidget {
-  const MovieInformationFromMovieList({
+class MovieListInformation extends StatelessWidget {
+  const MovieListInformation({
     super.key,
     required this.movie,
     required this.genres,
@@ -29,7 +29,7 @@ class MovieInformationFromMovieList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        MovieImageFromMovieList(
+        MovieListImage(
           cardSize: cardSize,
           posterImage: movie.fullPosterPath,
         ),
