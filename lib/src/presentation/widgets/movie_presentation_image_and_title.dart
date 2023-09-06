@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../utils/styles.dart';
+import '../../core/utils/styles.dart';
 
 class MoviePresentationImageTitle extends StatelessWidget {
   const MoviePresentationImageTitle({

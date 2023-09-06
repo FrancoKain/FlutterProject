@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../utils/styles.dart';
+import '../../core/utils/styles.dart';
 import 'movie_presentation_image_and_title.dart';
 import 'star_rate.dart';
 

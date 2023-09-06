@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../models/genres.dart';
-import 'genres_card.dart';
-import '../utils/styles.dart';
+import '../../domain/models/genres.dart';
+import '../../presentation/widgets/genres_card.dart';
+import '../../core/utils/styles.dart';
 
 class GenreListFromJson extends StatelessWidget {
   GenreListFromJson({

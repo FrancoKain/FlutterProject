@@ -1,11 +1,11 @@
 import 'dart:convert';
 import 'package:flutter/services.dart';
 
-import '../interfaces/i_repository.dart';
-import '../models/movie.dart';
+import '../../domain/repositories/i_repository.dart';
+import '../../domain/models/movie.dart';
 
 class MoviesRepository implements MyRepository {
-  static const String moviesJsonPath = 'assets/data/movies.json';
+  static const String moviesJsonPath = 'assets/mock_data/movies.json';
 
   List<Movie> movies = [];
 

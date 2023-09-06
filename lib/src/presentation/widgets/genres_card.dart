@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../utils/styles.dart';
+import '../../core/utils/styles.dart';
 
 class GenreCard extends StatelessWidget {
   const GenreCard({

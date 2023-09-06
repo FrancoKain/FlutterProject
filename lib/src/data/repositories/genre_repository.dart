@@ -1,12 +1,12 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
-import 'package:flutter_project/interfaces/i_repository.dart';
 
-import '../models/genres.dart';
+import '../../domain/models/genres.dart';
+import '../../domain/repositories/i_repository.dart';
 
 class GenreRepository implements MyRepository {
-  static const String genresJsonPath = 'assets/data/genres.json';
+  static const String genresJsonPath = 'assets/mock_data/genres.json';
   List<Genre> allGenres = [];
 
   @override

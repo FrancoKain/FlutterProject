@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project/local_repository_response.dart';
-import 'package:flutter_project/repositories/genre_repository.dart';
-import 'package:flutter_project/repositories/movies_repository.dart';
-import '../repositories/local_repository.dart';
-import '../utils/styles.dart';
-import '../widgets/movie_information_from_movie_list.dart';
+import '../../domain/models/local_repository_response.dart';
+import '../../data/repositories/genre_repository.dart';
+import '../../data/repositories/movies_repository.dart';
+import '../../data/repositories/local_repository.dart';
+import '../../core/utils/styles.dart';
+import '../widgets/movie_list_information.dart';
 
 class MovieListPage extends StatefulWidget {
   const MovieListPage({super.key});
@@ -35,8 +35,8 @@ class _MovieListPageState extends State<MovieListPage> {
       body: FutureBuilder(
         future: data,
         builder: (
-          context,
-          snapshot,
+          BuildContext context,
+            AsyncSnapshot snapshot,
         ) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(
@@ -67,7 +67,7 @@ class _MovieListPageState extends State<MovieListPage> {
                       ),
                       color: MovieListPage.cardColor,
                     ),
-                    child: MovieInformationFromMovieList(
+                    child: MovieListInformation(
                       movie: snapshot.data!.movies[index],
                       genres: local.getGenres(
                         snapshot.data!.movies[index].genresIds,

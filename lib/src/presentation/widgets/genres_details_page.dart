@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../models/genres.dart';
-import '../utils/styles.dart';
-import 'genres_card.dart';
+import '../../domain/models/genres.dart';
+import '../../core/utils/styles.dart';
+import '../../presentation/widgets/genres_card.dart';
 
 class GenresMovieDetails extends StatelessWidget {
   const GenresMovieDetails({

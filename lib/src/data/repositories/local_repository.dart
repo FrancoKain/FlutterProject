@@ -1,11 +1,12 @@
-import 'package:flutter_project/local_repository_response.dart';
-import 'package:flutter_project/models/genres.dart';
-import 'package:flutter_project/repositories/genre_repository.dart';
-import 'package:flutter_project/repositories/movies_repository.dart';
+import '../../domain/models/local_repository_response.dart';
+import '../../domain/models/genres.dart';
+import 'genre_repository.dart';
+import 'movies_repository.dart';
 
-import '../models/movie.dart';
+import '../../domain/repositories/i_repository.dart';
+import '../../domain/models/movie.dart';
 
-class LocalRepository {
+class LocalRepository implements MyRepository{
   final MoviesRepository movieRepo;
   final GenreRepository genreRepo;
 
@@ -14,6 +15,7 @@ class LocalRepository {
     required this.genreRepo,
   });
 
+  @override
   Future<LocalRepositoryResponse> getData() async {
     List<Movie> movies = await movieRepo.getData();
     List<Genre> genres = await genreRepo.getData();
