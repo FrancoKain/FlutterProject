@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../domain/models/genres.dart';
-import '../../domain/models/movie.dart';
+import '../../domain/entities/genres.dart';
+import '../../domain/entities/movie.dart';
 import '../pages/detail_movie_page.dart';
 import '../../core/utils/styles.dart';
 

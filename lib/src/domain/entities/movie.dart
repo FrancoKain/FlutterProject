@@ -11,8 +11,8 @@ class Movie {
   late List<int> genresIds;
 
   String get fullBackdropPath => '$imagesLink$backDrop';
-  String get fullPosterPath => '$imagesLink$poster';
 
+  String get fullPosterPath => '$imagesLink$poster';
 
   Movie({
     this.releaseDate,
@@ -24,19 +24,4 @@ class Movie {
     required this.poster,
     required this.genresIds,
   });
-
-  factory Movie.fromJson({
-    required Map<String, dynamic> json,
-  }) {
-    return Movie(
-      originalTitle: json['original_title'],
-      overview: json['overview'],
-      title: json['title'],
-      backDrop: json['backdrop_path'],
-      poster: json['poster_path'],
-      rate: json['vote_average'].toDouble(),
-      genresIds: List<int>.from(json['genre_ids']),
-      releaseDate: json['release_Date'],
-    );
-  }
 }

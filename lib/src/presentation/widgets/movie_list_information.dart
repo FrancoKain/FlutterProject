@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
-import '../../domain/models/genres.dart';
+import '../../domain/entities/genres.dart';
 
 import 'genre_list_movie_list.dart';
-import '../../domain/models/movie.dart';
+import '../../domain/entities/movie.dart';
 import 'star_rate.dart';
 import '../../core/utils/styles.dart';
 import 'button_to_movie.dart';

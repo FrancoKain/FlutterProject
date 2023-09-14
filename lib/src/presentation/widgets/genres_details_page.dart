@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../domain/models/genres.dart';
+import '../../domain/entities/genres.dart';
 import '../../core/utils/styles.dart';
 import '../../presentation/widgets/genres_card.dart';
 

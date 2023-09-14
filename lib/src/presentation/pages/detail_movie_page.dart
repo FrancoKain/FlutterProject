@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../../domain/models/genres.dart';
+import '../../domain/entities/genres.dart';
 import '../../presentation/widgets/search_engine.dart';
 import '../../core/utils/styles.dart';
 import '../widgets/button_section.dart';
-import '../../domain/models/movie.dart';
+import '../../domain/entities/movie.dart';
 import '../../presentation/widgets/movie_details.dart';
 import '../../presentation/widgets/movie_header.dart';
 import '../widgets/movie_presentation.dart';

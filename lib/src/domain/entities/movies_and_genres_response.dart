@@ -1,11 +1,11 @@
 import 'genres.dart';
 import 'movie.dart';
 
-class LocalRepositoryResponse {
+class MovieAndGenresResponse {
   final List<Movie> movies;
   final List<Genre> genres;
 
-  LocalRepositoryResponse({
+  MovieAndGenresResponse({
     required this.movies,
     required this.genres,
   });
