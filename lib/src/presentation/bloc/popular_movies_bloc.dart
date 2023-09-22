@@ -1,37 +1,28 @@
 import 'dart:async';
-import 'package:flutter_project/src/domain/entities/genres.dart';
-import 'package:flutter_project/src/domain/usercase/implementation/get_popular_movies_and_genres.dart';
-import 'package:flutter_project/src/presentation/bloc/ipopular_movies_bloc.dart';
 
-import 'package:meta/meta.dart';
+import '../../domain/entities/movie.dart';
+import '../../domain/user_cases/implementation/get_popular_movies_use_case.dart';
+import 'bloc.dart';
+import '../../core/utils/state.dart';
 
-import '../../domain/entities/movies_and_genres_response.dart';
 
-part 'popular_movies_event.dart';
-part 'popular_movies_state.dart';
+class PopularMoviesBloc extends Bloc {
+  late final GetPopularMoviesUseCase getPopularMoviesUseCase;
+  StreamController<DataState> _movieStateStream = StreamController<DataState>.broadcast();
 
-class PopularMoviesBloc extends IPopularMoviesBloc{
-  StreamController<MovieAndGenresResponse> _movieStream = StreamController<MovieAndGenresResponse>.broadcast();
   @override
   void dispose() {
-    _movieStream.close();
+    _movieStateStream.close();
   }
 
   @override
-  void initialize() {
-    GetPopularMoviesAndGenresUseCase();
+  void initialize() async {
+    getPopularMoviesUseCase = GetPopularMoviesUseCase();
+    final movieResponse = await getPopularMoviesUseCase.getPopularMovies();
+    _movieStateStream.sink.add(movieResponse);
   }
 
   @override
-  Stream<MovieAndGenresResponse> get popularMoviesStream => _movieStream.stream;
-
-  @override
-  List<Genre> getGenresById(List<int> ids) {
-    List<Genre> selectedGenres = [];
-    _movieStream.stream.listen((response) {
-      selectedGenres = response.genres.where((genre) => ids.contains(genre.id)).toList();
-    });
-    return selectedGenres;
-  }
+  Stream<DataState> get popularMoviesStream => _movieStateStream.stream;
 }
 

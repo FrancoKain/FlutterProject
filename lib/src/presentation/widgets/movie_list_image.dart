@@ -14,17 +14,20 @@ class MovieListImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      clipBehavior: Clip.hardEdge,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(
-          MyAppStyles.movieListPageRadius,
+    return SizedBox(
+      height: cardSize,
+      child: Card(
+        clipBehavior: Clip.hardEdge,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(
+            MyAppStyles.movieListPageRadius,
+          ),
         ),
-      ),
-      child: Image(
-        height: cardSize,
-        image: NetworkImage(
-          posterImage,
+        child: Image(
+          fit: BoxFit.cover,
+          image: NetworkImage(
+            posterImage,
+          ),
         ),
       ),
     );

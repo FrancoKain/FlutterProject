@@ -38,19 +38,6 @@ class DetailMoviePage extends StatelessWidget {
         ),
       ),
       backgroundColor: scaffoldBackground,
-      appBar: AppBar(
-        leading: const Icon(
-          Icons.person,
-          color: Colors.white,
-        ),
-        title: const Text(
-          MyAppStyles.appTitle,
-          style: TextStyle(
-            color: Colors.white54,
-          ),
-        ),
-        backgroundColor: Colors.black45,
-      ),
       body: SafeArea(
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),

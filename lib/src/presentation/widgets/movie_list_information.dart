@@ -17,7 +17,7 @@ class MovieListInformation extends StatelessWidget {
 
   final List<Genre> genres;
 
-  static const double cardSize = 250;
+  static const double cardSizeHeight = 250;
   static const double titleSizedBoxWidth = 200;
   static const double paddingBetweenImageAndInfo = 10.0;
 
@@ -30,7 +30,7 @@ class MovieListInformation extends StatelessWidget {
     return Row(
       children: [
         MovieListImage(
-          cardSize: cardSize,
+          cardSize: cardSizeHeight,
           posterImage: movie.fullPosterPath,
         ),
         Padding(
@@ -38,7 +38,7 @@ class MovieListInformation extends StatelessWidget {
             left: paddingBetweenImageAndInfo,
           ),
           child: SizedBox(
-            height: cardSize,
+            height: cardSizeHeight,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [

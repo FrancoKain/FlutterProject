@@ -1,9 +1,8 @@
 import 'package:flutter_project/src/presentation/bloc/bloc.dart';
 import '../../domain/entities/genres.dart';
-import '../../domain/entities/movies_and_genres_response.dart';
+import '../../domain/entities/movie.dart';
 
 abstract class IPopularMoviesBloc extends Bloc{
-  Stream<MovieAndGenresResponse> get popularMoviesStream;
+  Stream<List<Movie>> get popularMoviesStream;
 
-  List<Genre> getGenresById(List<int> ids);
 }

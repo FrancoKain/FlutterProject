@@ -1,4 +1,4 @@
 abstract class MyRepository<T> {
 
-  Future<T> getData();
+  Future<T> getPopularMovies();
 }

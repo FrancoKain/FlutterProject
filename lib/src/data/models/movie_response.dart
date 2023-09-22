@@ -1,14 +1,12 @@
 import 'package:flutter_project/src/data/models/movie_model.dart';
 
-import '../../domain/entities/movie.dart';
-
-class MovieResponse {
+class MoviePageModel {
   late final int page;
-  late final List<Movie> results;
+  late final List<MovieModel> results;
   late final int totalPages;
   late final int totalResults;
 
-  MovieResponse({
+  MoviePageModel({
     required Map<String, dynamic> json,
   }) {
     page = json['page'];
