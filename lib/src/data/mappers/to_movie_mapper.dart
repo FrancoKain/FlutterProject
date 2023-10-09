@@ -1,19 +1,20 @@
-import 'package:flutter_project/src/data/models/movie_model.dart';
-import 'package:flutter_project/src/domain/entities/movie.dart';
+import '../../data/models/movie_model.dart';
+import '../../domain/entities/movie.dart';
 
 import 'mapper.dart';
 
 class ToMovie implements Mapper<MovieModel, Movie> {
   @override
-  Movie call(MovieModel object) {
+  Movie call(MovieModel movieModel) {
     return Movie(
-      title: object.title,
-      originalTitle: object.originalTitle,
-      overview: object.overview,
-      rate: object.voteAverage,
-      backDrop: object.backdropPath,
-      poster: object.posterPath,
-      genresIds: object.genres,
+      title: movieModel.title,
+      originalTitle: movieModel.originalTitle,
+      overview: movieModel.overview,
+      rate: movieModel.voteAverage,
+      backDrop: movieModel.backdropPath,
+      poster: movieModel.posterPath,
+      genresIds: movieModel.genres,
+      id: movieModel.id,
     );
   }
 }

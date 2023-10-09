@@ -1,16 +1,26 @@
-import '../../domain/entities/genres.dart';
-
 class GenreModel {
+  final int id;
+  final String name;
 
-  static List<Genre> genreList(List<Map<String, dynamic>> json) {
-    List<Genre> genres = [];
-    json.forEach((value) {
-      genres.add(Genre(
-        id: value['id'],
-        name: value['name'],
-      )
-      );
-    });
-    return genres;
+  const GenreModel({
+    required this.name,
+    required this.id,
+  });
+
+  factory GenreModel.fromJson(Map<String, dynamic> json) {
+    return GenreModel(
+      id: json['id'],
+      name: json['name'],
+    );
+  }
+
+  static List<GenreModel> genreList(List<dynamic> data) {
+    return data
+        .map(
+          (genre) => GenreModel.fromJson(
+            genre,
+          ),
+        )
+        .toList();
   }
 }

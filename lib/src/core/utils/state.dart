@@ -8,19 +8,11 @@ enum ResponseState {
 class DataState<T> {
   DataState({
     this.data,
-    required this.state,
+    required this.responseState,
     this.error,
   });
 
   final T? data;
-  final ResponseState state;
+  final ResponseState responseState;
   final String? error;
-
-  bool get isLoading => this.state == ResponseState.loading;
-
-  bool get isEmpty => this.state == ResponseState.empty;
-
-  bool get hasData => this.state == ResponseState.success;
-
-  bool get hasError => this.state == ResponseState.error;
 }

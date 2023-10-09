@@ -1,5 +1,4 @@
 class MovieModel {
-
   final String title;
   final String originalTitle;
   final String originalLanguage;
@@ -32,8 +31,6 @@ class MovieModel {
     required this.voteCount,
   });
 
-
-
   factory MovieModel.fromJson(Map<String, dynamic> json) {
     return MovieModel(
       title: json['title'],
@@ -53,10 +50,15 @@ class MovieModel {
     );
   }
 
-  static List<MovieModel> movieList(List<dynamic> data){
-    return data.map(
-          (movie) => MovieModel.fromJson(movie),
-    )
-        .toList();
+  static List<MovieModel> movieList(List<dynamic> data) {
+    if (data.isNotEmpty) {
+      return data
+          .map(
+            (movie) => MovieModel.fromJson(movie),
+          )
+          .toList();
+    } else {
+      return [];
+    }
   }
 }

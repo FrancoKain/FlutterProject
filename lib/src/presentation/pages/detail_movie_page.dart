@@ -1,32 +1,36 @@
 import 'package:flutter/material.dart';
-
-import '../../domain/entities/genres.dart';
-import '../../presentation/widgets/search_engine.dart';
+import '../../domain/entities/genre.dart';
+import '../widgets/detail_movie_page/search_engine.dart';
 import '../../core/utils/styles.dart';
-import '../widgets/button_section.dart';
+import '../widgets/detail_movie_page/button_section.dart';
 import '../../domain/entities/movie.dart';
-import '../../presentation/widgets/movie_details.dart';
-import '../../presentation/widgets/movie_header.dart';
-import '../widgets/movie_presentation.dart';
-import '../widgets/genres_details_page.dart';
+import '../widgets/detail_movie_page/movie_details.dart';
+import '../widgets/detail_movie_page/movie_header.dart';
+import '../widgets/detail_movie_page/movie_presentation.dart';
+import '../widgets/detail_movie_page/genres_details_page.dart';
 
 class DetailMoviePage extends StatelessWidget {
-   const DetailMoviePage({
+  const DetailMoviePage({
     super.key,
-    required this.movie, required this.genres,
+    required this.movie,
+    required this.genres,
   });
 
+  static const Key keyScaffold = Key('scaffoldDetailsPage');
+
   static const Color scaffoldBackground = MyAppStyles.backgroundColor;
-  static const Color floatingButtonColor = Color(0xff6D586D);
+  static const Color floatingButtonColor = Color(
+    0xff6D586D,
+  );
   static const double paddingBetween = 30;
 
   final List<Genre> genres;
   final Movie movie;
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: keyScaffold,
       floatingActionButton: FloatingActionButton(
         backgroundColor: floatingButtonColor,
         onPressed: () => Navigator.pop(
@@ -61,15 +65,13 @@ class DetailMoviePage extends StatelessWidget {
               GenresMovieDetails(
                 movieGenres: genres,
               ),
-
-              //here i would put recommendations
             ]
                 .map((widget) => Padding(
-              padding: const EdgeInsets.only(
-                top: paddingBetween,
-              ),
-              child: widget,
-            ))
+                      padding: const EdgeInsets.only(
+                        top: paddingBetween,
+                      ),
+                      child: widget,
+                    ))
                 .toList(),
           ),
         ),
