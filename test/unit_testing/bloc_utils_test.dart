@@ -32,7 +32,7 @@ void main() {
     test(
         'method checkAndConvertIntoResponse() from BlocUtils should return a instance of DataState with a responseState error by genreResponse',
         () async {
-      final response = BlocUtils.mapToMovieAndGenresResponse(
+      final response = mapToMovieAndGenresResponse(
         successMovie,
         error,
       );
@@ -48,7 +48,7 @@ void main() {
     test(
         'method checkAndConvertIntoResponse() from BlocUtils should return a instance of DataState with a responseState error by movieResponse',
         () async {
-      final response = BlocUtils.mapToMovieAndGenresResponse(
+      final response = mapToMovieAndGenresResponse(
         empty,
         error,
       );
@@ -64,7 +64,7 @@ void main() {
     test(
         'method checkAndConvertIntoResponse() from BlocUtils should return a instance of DataState with a responseState error by MovieResponse',
         () async {
-      final response = BlocUtils.mapToMovieAndGenresResponse(
+      final response = mapToMovieAndGenresResponse(
         error,
         error,
       );
@@ -80,7 +80,7 @@ void main() {
     test(
         'method checkAndConvertIntoResponse() from BlocUtils should return a instance of DataState with a responseState loading by movieResponse',
         () async {
-      final response = BlocUtils.mapToMovieAndGenresResponse(
+      final response = mapToMovieAndGenresResponse(
         loading,
         error,
       );
@@ -96,7 +96,7 @@ void main() {
     test(
         'method checkAndConvertIntoResponse() from BlocUtils should return a instance of DataState with a responseState loading by genreResponse',
         () async {
-      final response = BlocUtils.mapToMovieAndGenresResponse(
+      final response = mapToMovieAndGenresResponse(
         successMovie,
         loading,
       );
@@ -112,7 +112,7 @@ void main() {
     test(
         'method checkAndConvertIntoResponse() from BlocUtils should return a instance of DataState with a responseState empty by genreResponse',
         () async {
-      final response = BlocUtils.mapToMovieAndGenresResponse(
+      final response = mapToMovieAndGenresResponse(
         successMovie,
         empty,
       );
@@ -128,7 +128,7 @@ void main() {
     test(
         'method checkAndConvertIntoResponse() from BlocUtils should return a instance of DataState with a responseState success by both responses',
         () async {
-      final response = BlocUtils.mapToMovieAndGenresResponse(
+      final response = mapToMovieAndGenresResponse(
         successMovie,
         successGenre,
       );

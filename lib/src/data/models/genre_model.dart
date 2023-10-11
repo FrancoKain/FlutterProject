@@ -7,7 +7,7 @@ class GenreModel {
     required this.id,
   });
 
-  factory GenreModel.fromJson(Map<String, dynamic> json) {
+  factory GenreModel.fromJson(Map json) {
     return GenreModel(
       id: json['id'],
       name: json['name'],

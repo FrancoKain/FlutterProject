@@ -2,21 +2,20 @@ import '../../lib/src/core/utils/state.dart';
 import '../../lib/src/core/utils/ui_resource_state.dart';
 import '../../lib/src/data/datasource/remote/i_api_service.dart';
 import '../../lib/src/data/repositories/genre_repository.dart';
-import '../../lib/src/data/repositories/movies_repository.dart';
 import '../../lib/src/domain/entities/genre.dart';
 import '../../lib/src/domain/entities/movie.dart';
 import '../../lib/src/domain/user_cases/implementation/get_genres_use_case.dart';
-import '../../lib/src/domain/user_cases/implementation/get_now_playing_movies_use_case.dart';
-import '../../lib/src/domain/user_cases/implementation/get_popular_movies_use_case.dart';
+import '../../lib/src/domain/user_cases/implementation/get_movies_by_endpoint_use_case.dart';
 import '../../lib/src/presentation/bloc/movie_list_page_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-class MockGetPopularMoviesUseCase implements GetPopularMoviesUseCase {
+class MockGetPopularMoviesUseCase implements GetMoviesByEndPointUseCase {
   @override
-  ApiService get api => throw UnimplementedError();
+  // TODO: implement endpoint
+  String get endpoint => throw UnimplementedError();
 
   @override
-  Future<DataState> getPopularMovies() {
+  Future<DataState> getData() {
     List<Movie> movies = [];
 
     return Future.value(
@@ -26,15 +25,9 @@ class MockGetPopularMoviesUseCase implements GetPopularMoviesUseCase {
       ),
     );
   }
-
-  @override
-  MoviesRepository get movieRepo => throw UnimplementedError();
 }
 
-class MockGetNowPlayingMoviesUseCase implements GetNowPlayingMoviesUseCase {
-  @override
-  ApiService get api => throw UnimplementedError();
-
+class MockGetNowPlayingMovies implements GetMoviesByEndPointUseCase {
   @override
   Future<DataState> getData() {
     List<Movie> movies = [];
@@ -47,7 +40,8 @@ class MockGetNowPlayingMoviesUseCase implements GetNowPlayingMoviesUseCase {
   }
 
   @override
-  MoviesRepository get movieRepo => throw UnimplementedError();
+  // TODO: implement endpoint
+  String get endpoint => throw UnimplementedError();
 }
 
 class MockGetGenresUseCase implements GetGenresUseCase {
@@ -75,8 +69,8 @@ void main() {
       () async {
     MovieListPageBloc bloc = MovieListPageBloc.fromMock(
       getGenresUseCase: MockGetGenresUseCase(),
-      getNowPlayingMoviesUseCase: MockGetNowPlayingMoviesUseCase(),
-      getPopularMoviesUseCase: MockGetPopularMoviesUseCase(),
+      getNowPlayingMovies: MockGetNowPlayingMovies(),
+      getPopularMovies: MockGetPopularMoviesUseCase(),
     );
     Stream popularStream = bloc.popularMoviesStream;
     Stream nowPlayingStream = bloc.nowPlayingMoviesStream;

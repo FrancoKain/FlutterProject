@@ -18,10 +18,10 @@ class GenreRepository implements MyRepository {
 
   @override
   Future<DataState> getData(
-    String url,
+    [String url = ""]
   ) async {
     try {
-      final GenrePageModel response = await api.Fetch(url);
+      final GenrePageModel response = await api.fetch(url);
       if (response.results.isEmpty) {
         return DataState(
           responseState: ResponseState.empty,

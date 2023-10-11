@@ -15,13 +15,13 @@ void main() {
     );
     expect(
       find.byKey(
-        Key('detailsPageMovieOverview'),
+        const Key('detailsPageMovieOverview'),
       ),
       findsOneWidget,
     );
     Text text = tester.widget(
       find.byKey(
-        Key('detailsPageMovieOverview'),
+        const Key('detailsPageMovieOverview'),
       ),
     );
     expect(

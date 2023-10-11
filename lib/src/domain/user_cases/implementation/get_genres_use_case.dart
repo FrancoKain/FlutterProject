@@ -5,13 +5,16 @@ import '../../../data/repositories/genre_repository.dart';
 
 class GetGenresUseCase {
   final ApiService api = GenreApiProvider();
-  late final GenreRepository genreRepo = GenreRepository(
-    api: api,
-  );
+  final GenreRepository genreRepo;
+
+  GetGenresUseCase({
+    GenreRepository? moviesRepository,
+  }) : genreRepo = moviesRepository ??
+            GenreRepository(
+              api: GenreApiProvider(),
+            );
 
   Future<DataState> getGenres() async {
-    return await genreRepo.getData(
-      "",
-    );
+    return await genreRepo.getData();
   }
 }

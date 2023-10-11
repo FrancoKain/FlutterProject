@@ -1,25 +1,25 @@
 import '../../core/utils/bloc_utils.dart';
 import '../../core/utils/state.dart';
-import '../../domain/user_cases/implementation/get_top_rated_movies_use_case.dart';
 import 'dart:async';
 
-import '../../core/bloc/bloc.dart';
+import '../../core/bloc/i_bloc.dart';
 import '../../core/utils/ui_resource_state.dart';
-import '../../domain/entities/genre.dart';
 import '../../domain/user_cases/implementation/get_genres_use_case.dart';
+import '../../domain/user_cases/implementation/get_movies_by_endpoint_use_case.dart';
 
-class TopRatedMoviesBloc extends Bloc {
-  late final GetTopRatedMoviesUseCase getTopRatedMoviesUseCase;
+class TopRatedMoviesBloc extends IBloc {
+  late final GetMoviesByEndPointUseCase getTopRatedMovies;
   late final GetGenresUseCase getGenresUseCase;
+  final String endPointTopRatedMovies = "movie/top_rated?";
   StreamController<UiResourceState> _movieStream =
       StreamController<UiResourceState>.broadcast();
 
   TopRatedMoviesBloc(){
-    getTopRatedMoviesUseCase = GetTopRatedMoviesUseCase();
+    getTopRatedMovies = GetMoviesByEndPointUseCase(endpoint: endPointTopRatedMovies);
     getGenresUseCase = GetGenresUseCase();
   }
   TopRatedMoviesBloc.fromMock({
-    required this.getTopRatedMoviesUseCase,
+    required this.getTopRatedMovies,
     required this.getGenresUseCase,
 });
 
@@ -36,7 +36,7 @@ class TopRatedMoviesBloc extends Bloc {
       ),
     );
     final genreResponse = await getGenresUseCase.getGenres();
-    final movieResponse = await getTopRatedMoviesUseCase.getData();
+    final movieResponse = await getTopRatedMovies.getData();
     _movieStream.sink.add(
       checkAndConvertIntoResponse(
         movieResponse,
@@ -45,18 +45,11 @@ class TopRatedMoviesBloc extends Bloc {
     );
   }
 
-  List<Genre> getGenresById(List<int> ids, List<Genre> genres) {
-    return BlocUtils.getGenres(
-      ids,
-      genres,
-    );
-  }
-
   UiResourceState checkAndConvertIntoResponse(
     DataState movieResponse,
     DataState genreResponse,
   ) {
-    return BlocUtils.mapToMovieAndGenresResponse(
+    return mapToMovieAndGenresResponse(
       movieResponse,
       genreResponse,
     );

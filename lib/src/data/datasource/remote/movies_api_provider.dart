@@ -1,5 +1,7 @@
 import 'dart:async';
-import 'package:flutter_project/src/core/api_constants.dart';
+import 'dart:io';
+
+import '../../../core/api_constants.dart';
 import '../../models/movie_page_model.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -7,14 +9,13 @@ import 'dart:convert';
 import 'i_api_service.dart';
 
 class ApiMovieService implements ApiService {
-
-   Future<MoviePageModel> Fetch(String url) async {
+  Future<MoviePageModel> fetch(String url) async {
     final response = await http.get(
-      Uri.parse(ApiConstants.apiUrl + url + ApiConstants.apiKey),
+      Uri.parse('${ApiConstants.apiUrl}$url${ApiConstants.apiKey}'),
     );
-    if (response.statusCode == 200) {
-      return MoviePageModel(
-        json: json.decode(
+    if (response.statusCode == HttpStatus.ok) {
+      return MoviePageModel.fromJson(
+        json.decode(
           response.body,
         ),
       );
@@ -23,5 +24,3 @@ class ApiMovieService implements ApiService {
     }
   }
 }
-
-

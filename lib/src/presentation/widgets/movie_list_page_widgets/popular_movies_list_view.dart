@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_project/src/core/utils/extensions.dart';
 
 import '../../../core/utils/styles.dart';
 import '../../../domain/entities/genre.dart';
@@ -26,8 +27,8 @@ class PopularMoviesListView extends StatelessWidget {
       shrinkWrap: true,
       itemCount: movies.length,
       itemBuilder: (
-        context,
-        index,
+        BuildContext context,
+         int index,
       ) {
         return Padding(
           padding: const EdgeInsets.all(
@@ -42,9 +43,8 @@ class PopularMoviesListView extends StatelessWidget {
             ),
             child: MovieListInformation(
               movie: movies[index],
-              genres: movieListPageBloc.getGenresById(
+              genres: genres.getGenresById(
                 movies[index].genresIds,
-                genres,
               ),
             ),
           ),

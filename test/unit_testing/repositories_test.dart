@@ -52,9 +52,9 @@ class MovieApiProviderSuccess implements ApiService {
   };
 
   @override
-  Future<MoviePageModel> Fetch(_) async {
-    return await MoviePageModel(
-      json: map,
+  Future<MoviePageModel> fetch(_) async {
+    return await MoviePageModel.fromJson(
+       map,
     );
   }
 }
@@ -68,9 +68,9 @@ class MovieApiProvideEmpty implements ApiService {
   };
 
   @override
-  Future<MoviePageModel> Fetch(_) async {
-    return await MoviePageModel(
-      json: emptyMap,
+  Future<MoviePageModel> fetch(_) async {
+    return await MoviePageModel.fromJson(
+       emptyMap,
     );
   }
 }
@@ -90,9 +90,9 @@ class GenreApiProvideSuccess implements ApiService {
   };
 
   @override
-  Future<GenrePageModel> Fetch(String url) async {
-    return await GenrePageModel(
-      json: map,
+  Future<GenrePageModel> fetch(String url) async {
+    return await GenrePageModel.fromJson(
+      map,
     );
   }
 }
@@ -103,16 +103,16 @@ class GenreApiProvideEmpty implements ApiService {
   };
 
   @override
-  Future<GenrePageModel> Fetch(String url) async {
-    return await GenrePageModel(
-      json: map,
+  Future<GenrePageModel> fetch(String url) async {
+    return await GenrePageModel.fromJson(
+      map,
     );
   }
 }
 
 class MovieApiProviderFailure implements ApiService {
   @override
-  Future Fetch(String url) {
+  Future fetch(String url) {
     throw const SocketException(
       'Exception',
     );
@@ -121,7 +121,7 @@ class MovieApiProviderFailure implements ApiService {
 
 class GenreApiProvideFailure implements ApiService {
   @override
-  Future Fetch(String url) {
+  Future fetch(String url) {
     throw const SocketException(
       'Exception',
     );

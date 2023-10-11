@@ -1,3 +1,3 @@
 abstract class ApiService<T> {
-  Future<T> Fetch(String url);
+  Future<T> fetch(String url);
 }

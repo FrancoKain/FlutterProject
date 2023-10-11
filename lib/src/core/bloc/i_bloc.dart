@@ -1,5 +1,4 @@
-abstract class Bloc{
-
+abstract class IBloc {
   void initialize();
 
   void dispose();

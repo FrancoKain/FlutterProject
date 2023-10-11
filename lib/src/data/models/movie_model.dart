@@ -31,7 +31,7 @@ class MovieModel {
     required this.voteCount,
   });
 
-  factory MovieModel.fromJson(Map<String, dynamic> json) {
+  factory MovieModel.fromJson(Map json) {
     return MovieModel(
       title: json['title'],
       originalTitle: json['original_title'],

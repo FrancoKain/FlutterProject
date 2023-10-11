@@ -1,19 +1,15 @@
+import '../../lib/src/domain/user_cases/implementation/get_movies_by_endpoint_use_case.dart';
 import '../../lib/src/core/utils/state.dart';
 import '../../lib/src/core/utils/ui_resource_state.dart';
 import '../../lib/src/data/datasource/remote/i_api_service.dart';
 import '../../lib/src/data/repositories/genre_repository.dart';
-import '../../lib/src/data/repositories/movies_repository.dart';
 import '../../lib/src/domain/entities/genre.dart';
 import '../../lib/src/domain/entities/movie.dart';
 import '../../lib/src/domain/user_cases/implementation/get_genres_use_case.dart';
-import '../../lib/src/domain/user_cases/implementation/get_top_rated_movies_use_case.dart';
 import '../../lib/src/presentation/bloc/top_rated_movies_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-class MockGetTopRatedMoviesUseCase implements GetTopRatedMoviesUseCase {
-  @override
-  ApiService get api => throw UnimplementedError();
-
+class MockGetTopRatedMovies implements GetMoviesByEndPointUseCase {
   @override
   Future<DataState> getData() {
     List<Movie> movies = [];
@@ -24,9 +20,9 @@ class MockGetTopRatedMoviesUseCase implements GetTopRatedMoviesUseCase {
       ),
     );
   }
-
   @override
-  MoviesRepository get movieRepo => throw UnimplementedError();
+  // TODO: implement endpoint
+  String get endpoint => throw UnimplementedError();
 }
 
 class MockGetGenresUseCase implements GetGenresUseCase {
@@ -54,7 +50,7 @@ void main() {
       () async {
     TopRatedMoviesBloc bloc = TopRatedMoviesBloc.fromMock(
       getGenresUseCase: MockGetGenresUseCase(),
-      getTopRatedMoviesUseCase: MockGetTopRatedMoviesUseCase(),
+      getTopRatedMovies: MockGetTopRatedMovies(),
     );
     Stream topRatedStream = bloc.topRatedMoviesStream;
     expectLater(

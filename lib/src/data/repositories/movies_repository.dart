@@ -16,9 +16,9 @@ class MoviesRepository implements MyRepository {
   final ApiService api;
 
   @override
-  Future<DataState> getData(String url) async {
+  Future<DataState> getData([String url = ""]) async {
     try {
-      final MoviePageModel response = await api.Fetch(
+      final MoviePageModel response = await api.fetch(
         url,
       );
       if (response.results.isEmpty) {
