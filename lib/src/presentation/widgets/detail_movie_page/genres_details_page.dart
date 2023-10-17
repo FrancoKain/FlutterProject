@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import '../../../domain/entities/genre.dart';
 import '../../../core/utils/styles.dart';
