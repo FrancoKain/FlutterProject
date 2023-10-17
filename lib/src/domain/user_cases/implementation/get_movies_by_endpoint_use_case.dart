@@ -6,17 +6,13 @@ class GetMoviesByEndPointUseCase {
   GetMoviesByEndPointUseCase({
     required this.endpoint,
     MoviesRepository? moviesRepository,
-  }) : _moviesRepository = moviesRepository ??
-            MoviesRepository(
-              api: ApiMovieService(),
-            );
+  }) : _moviesRepository =
+            moviesRepository ?? MoviesRepository(api: ApiMovieService());
 
   final MoviesRepository _moviesRepository;
   final String endpoint;
 
   Future<DataState> getData() async {
-    return await _moviesRepository.getData(
-      endpoint,
-    );
+    return await _moviesRepository.getData(endpoint);
   }
 }

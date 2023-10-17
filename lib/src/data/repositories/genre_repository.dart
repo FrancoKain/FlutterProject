@@ -9,22 +9,16 @@ import '../models/genre_page_model.dart';
 class GenreRepository implements MyRepository {
   late List<Genre> listGenres;
 
-  GenreRepository({
-    required this.api,
-  });
+  GenreRepository({required this.api});
 
   final ApiService api;
 
   @override
-  Future<DataState> getData(
-    [String url = ""]
-  ) async {
+  Future<DataState> getData([String url = ""]) async {
     try {
       final GenrePageModel response = await api.fetch(url);
       if (response.results.isEmpty) {
-        return DataState(
-          responseState: ResponseState.empty,
-        );
+        return DataState(responseState: ResponseState.empty);
       } else {
         List<Genre> genreList = [];
         genreList = response.results.map((e) => ToGenre().call(e)).toList();

@@ -37,31 +37,21 @@ Future<void> main() async {
         ),
       );
     else {
-      return UiResourceState(
-        responseState: response,
-      );
+      return UiResourceState(responseState: response);
     }
   }
 
   final Stream<UiResourceState> popularMoviesDataLoading = Stream.fromFuture(
-    getData(
-      1,
-    ),
+    getData(1),
   );
   final Stream<UiResourceState> popularMoviesDataError = Stream.fromFuture(
-    getData(
-      2,
-    ),
+    getData(2),
   );
   final Stream<UiResourceState> popularMoviesDataSuccess = Stream.fromFuture(
-    getData(
-      3,
-    ),
+    getData(3),
   );
   final Stream<UiResourceState> popularMoviesDataEmpty = Stream.fromFuture(
-    getData(
-      4,
-    ),
+    getData(4),
   );
 
   group(
@@ -80,9 +70,7 @@ Future<void> main() async {
       );
       await tester.pump();
       expect(
-        find.byKey(
-          const Key('loadingResponsePopular'),
-        ),
+        find.byKey(const Key('loadingResponsePopular')),
         findsOneWidget,
       );
     });
@@ -99,9 +87,7 @@ Future<void> main() async {
       );
       await tester.pumpAndSettle();
       expect(
-        find.byKey(
-          const Key('errorResponsePopular'),
-        ),
+        find.byKey(const Key('errorResponsePopular')),
         findsOneWidget,
       );
     });
@@ -118,9 +104,7 @@ Future<void> main() async {
       );
       await tester.pumpAndSettle();
       expect(
-        find.byType(
-          PopularMoviesListView,
-        ),
+        find.byType(PopularMoviesListView),
         findsOneWidget,
       );
     });
@@ -137,9 +121,7 @@ Future<void> main() async {
       );
       await tester.pumpAndSettle();
       expect(
-        find.byKey(
-          const Key('emptyResponsePopular'),
-        ),
+        find.byKey(const Key('emptyResponsePopular')),
         findsOneWidget,
       );
     });

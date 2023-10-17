@@ -29,9 +29,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: const Text(
           MyAppStyles.appTitle,
-          style: TextStyle(
-            color: Colors.white54,
-          ),
+          style: TextStyle(color: Colors.white54),
         ),
         backgroundColor: Colors.black45,
       ),

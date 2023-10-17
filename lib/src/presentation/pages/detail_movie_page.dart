@@ -19,9 +19,7 @@ class DetailMoviePage extends StatelessWidget {
   static const Key keyScaffold = Key('scaffoldDetailsPage');
 
   static const Color scaffoldBackground = MyAppStyles.backgroundColor;
-  static const Color floatingButtonColor = Color(
-    0xff6D586D,
-  );
+  static const Color floatingButtonColor = Color(0xff6D586D);
   static const double paddingBetween = 30;
 
   final List<Genre> genres;
@@ -58,20 +56,13 @@ class DetailMoviePage extends StatelessWidget {
                 movieOriginalTitle: movie.originalTitle,
                 movieRate: movie.rate,
               ),
-              MovieDetails(
-                movieOverview: movie.overview,
-              ),
+              MovieDetails(movieOverview: movie.overview),
               const ButtonSection(),
-              GenresMovieDetails(
-                movieGenres: genres,
-              ),
+              GenresMovieDetails(movieGenres: genres),
             ]
                 .map((widget) => Padding(
-                      padding: const EdgeInsets.only(
-                        top: paddingBetween,
-                      ),
-                      child: widget,
-                    ))
+                    padding: const EdgeInsets.only(top: paddingBetween),
+                    child: widget))
                 .toList(),
           ),
         ),

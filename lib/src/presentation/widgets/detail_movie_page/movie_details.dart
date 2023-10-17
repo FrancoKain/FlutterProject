@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import '../../../core/utils/styles.dart';
 
@@ -21,9 +20,7 @@ class MovieDetails extends StatelessWidget {
 
   static const double paddingTopBetweenDescriptionOverview = 12;
 
-  static const Key textOverviewKey = Key(
-    'detailsPageMovieOverview',
-  );
+  static const Key textOverviewKey = Key('detailsPageMovieOverview');
 
   @override
   Widget build(BuildContext context) {
@@ -40,8 +37,7 @@ class MovieDetails extends StatelessWidget {
           Center(
             child: Padding(
               padding: const EdgeInsets.only(
-                top: paddingTopBetweenDescriptionOverview,
-              ),
+                  top: paddingTopBetweenDescriptionOverview),
               child: Text(
                 key: textOverviewKey,
                 movieOverview,

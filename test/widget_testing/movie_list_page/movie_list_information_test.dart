@@ -30,37 +30,27 @@ void main() {
     );
     await tester.pumpAndSettle();
     expect(
-      find.byType(
-        StarRate,
-      ),
+      find.byType(StarRate),
       findsOneWidget,
     );
     expect(
-      find.byType(
-        GenreListMovieListPage,
-      ),
+      find.byType(GenreListMovieListPage),
       findsOneWidget,
     );
     final Text text = tester.widget(
       find.byKey(
-        const Key(
-          'movieListInformationTitleText',
-        ),
+        const Key('movieListInformationTitleText'),
       ),
     );
     expect(
       find.byKey(
-        const Key(
-          'movieListInformationTitleText',
-        ),
+        const Key('movieListInformationTitleText'),
       ),
       findsOneWidget,
     );
     expect(
       text.data,
-      equals(
-        movie.title,
-      ),
+      equals(movie.title),
     );
   });
 }

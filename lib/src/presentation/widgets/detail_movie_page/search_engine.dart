@@ -13,9 +13,7 @@ class SearchSection extends StatelessWidget {
 
   static const String searchText = 'Search';
 
-  static const Color searchBarColor = Color(
-    0xff513A51,
-  );
+  static const Color searchBarColor = Color(0xff513A51);
 
   @override
   Widget build(BuildContext context) {
@@ -25,23 +23,15 @@ class SearchSection extends StatelessWidget {
         vertical: paddingSymmetric,
       ),
       child: Container(
-        padding: const EdgeInsets.all(
-          paddingSearchBar,
-        ),
+        padding: const EdgeInsets.all(paddingSearchBar),
         decoration: BoxDecoration(
           color: searchBarColor,
-          borderRadius: BorderRadius.circular(
-            borderRadiusSearchBar,
-          ),
+          borderRadius: BorderRadius.circular(borderRadiusSearchBar),
         ),
         child: const Row(
           children: [
-            Icon(
-              Icons.search,
-            ),
-            SizedBox(
-              width: spaceBetweenIconSearchText,
-            ),
+            Icon(Icons.search),
+            SizedBox(width: spaceBetweenIconSearchText),
             Text(
               searchText,
               style: TextStyle(

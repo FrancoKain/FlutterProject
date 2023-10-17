@@ -27,14 +27,10 @@ class GenreCard extends StatelessWidget {
       clipBehavior: Clip.hardEdge,
       color: genreColor,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(
-          borderRadiusGenreCard,
-        ),
+        borderRadius: BorderRadius.circular(borderRadiusGenreCard),
       ),
       child: Padding(
-        padding: EdgeInsets.all(
-          sizeOfCard,
-        ),
+        padding: EdgeInsets.all(sizeOfCard),
         child: Text(
           genre,
           style: genreText,

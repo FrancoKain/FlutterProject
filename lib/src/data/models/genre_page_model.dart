@@ -9,11 +9,9 @@ class GenrePageModel {
 
   factory GenrePageModel.fromJson(Map json) {
     return GenrePageModel(
-      results: GenreModel.genreList(
-        List.from(
-          json['genres'],
-        ),
-      ),
+      results: List.from(json['genres'])
+          .map((genre) => GenreModel.fromJson(genre))
+          .toList(),
     );
   }
 }

@@ -8,9 +8,7 @@ void main() {
       (WidgetTester tester) async {
     await tester.pumpWidget(
       const MaterialApp(
-        home: MovieDetails(
-          movieOverview: 'details',
-        ),
+        home: MovieDetails(movieOverview: 'details'),
       ),
     );
     expect(
@@ -26,15 +24,11 @@ void main() {
     );
     expect(
       text.data,
-      equals(
-        'details',
-      ),
+      equals('details'),
     );
     expect(
       find.byType(Text),
-      findsNWidgets(
-        2,
-      ),
+      findsNWidgets(2),
     );
   });
 }

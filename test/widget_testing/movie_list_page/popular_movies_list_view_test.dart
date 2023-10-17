@@ -45,12 +45,8 @@ void main() {
       ),
     );
     expect(
-      find.byType(
-        MovieListInformation,
-      ),
-      findsNWidgets(
-        mockMovieList.length,
-      ),
+      find.byType(MovieListInformation),
+      findsNWidgets(mockMovieList.length),
     );
   });
 }

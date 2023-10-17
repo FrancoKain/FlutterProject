@@ -57,9 +57,7 @@ void main() {
       );
       await tester.tap(
         find.byKey(
-          const Key(
-            'PageViewNavigateToDetails',
-          ),
+          const Key('PageViewNavigateToDetails'),
         ),
       );
       await tester.pumpAndSettle();
@@ -81,12 +79,8 @@ void main() {
       );
       await tester.pumpAndSettle();
       expect(
-        find.byType(
-          SizedBox,
-        ),
-        findsNWidgets(
-          mockMovieList.length,
-        ),
+        find.byType(SizedBox),
+        findsNWidgets(mockMovieList.length),
       );
     });
   });

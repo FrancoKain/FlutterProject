@@ -18,16 +18,12 @@ class ButtonToMovie extends StatelessWidget {
 
   static const String buttonText = "See this awesome movie!";
 
-  static const Key buttonToDetailsKey = Key(
-    'ButtonNavigateToDetails',
-  );
+  static const Key buttonToDetailsKey = Key('ButtonNavigateToDetails');
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(
-        top: MyAppStyles.movieListPadding,
-      ),
+      padding: const EdgeInsets.only(top: MyAppStyles.movieListPadding),
       child: InkWell(
         key: buttonToDetailsKey,
         onTap: () => Navigator.push(
@@ -44,9 +40,7 @@ class ButtonToMovie extends StatelessWidget {
           height: buttonHeight,
           decoration: BoxDecoration(
             color: MyAppStyles.boxContentLightColor,
-            borderRadius: BorderRadius.circular(
-              borderRadiusButton,
-            ),
+            borderRadius: BorderRadius.circular(borderRadiusButton),
           ),
           child: const Center(
             child: Text(

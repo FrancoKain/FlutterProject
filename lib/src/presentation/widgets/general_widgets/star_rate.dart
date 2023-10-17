@@ -58,9 +58,7 @@ class StarRate extends StatelessWidget {
               starColor,
             ),
           Padding(
-            padding: const EdgeInsets.only(
-              left: paddingLeftBetweenStarsRate,
-            ),
+            padding: const EdgeInsets.only(left: paddingLeftBetweenStarsRate),
             child: Text(
               "$rate",
               style: const TextStyle(

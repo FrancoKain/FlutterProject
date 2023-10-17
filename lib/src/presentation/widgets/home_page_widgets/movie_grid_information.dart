@@ -27,20 +27,16 @@ class _MovieGridInformationState extends State<MovieGridInformation> {
   double animationWidth = 200;
   late Offset offset = Offset(animationWidth / 2, animationHeight);
   static const Key gridViewNavigation = Key('GridViewNavigateToDetails');
-  static const Key gridCachedImage = Key(
-    'gridImageKey',
-  );
-  static const Key floatingButtonKey = Key(
-    'floatingButtonAnimation',
-  );
+  static const Key gridCachedImage = Key('gridImageKey');
+  static const Key floatingButtonKey = Key('floatingButtonAnimation');
   static const double initialAnimationHeight = 0;
   late double animationFinalHeight = animationHeight * 0.75;
   late double animationRadius = animationHeight * 0.9;
   static const double paddingValue = 10.0;
   static const double sizeBoxHeight = 100;
-  static const double positionatedSizeBoxHeight = 30;
+  static const double positionedSizeBoxHeight = 30;
 
-  static const double positionatedSizeBoxWidth = 30;
+  static const double positionedSizeBoxWidth = 30;
 
   static const int movieOverviewMaxLines = 5;
 
@@ -64,9 +60,7 @@ class _MovieGridInformationState extends State<MovieGridInformation> {
       child: Card(
         clipBehavior: Clip.hardEdge,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(
-            MyAppStyles.movieListPageRadius,
-          ),
+          borderRadius: BorderRadius.circular(MyAppStyles.movieListPageRadius),
         ),
         child: SizedBox(
           height: sizeBoxHeight,
@@ -90,31 +84,25 @@ class _MovieGridInformationState extends State<MovieGridInformation> {
                   child: Container(
                     color: Colors.black45,
                     child: Padding(
-                      padding: const EdgeInsets.all(
-                        paddingValue,
-                      ),
+                      padding: const EdgeInsets.all(paddingValue),
                       child: Center(
                         child: Text(
                           widget.movie.overview,
-                          style: const TextStyle(
-                            color: Colors.white,
-                          ),
+                          style: const TextStyle(color: Colors.white),
                           maxLines: movieOverviewMaxLines,
                         ),
                       ),
                     ),
                   ),
-                  duration: const Duration(
-                    milliseconds: durationOfAnimation,
-                  ),
+                  duration: const Duration(milliseconds: durationOfAnimation),
                 ),
               ),
               Positioned(
                 bottom:
                     _selected ? animationFinalHeight : initialAnimationHeight,
                 child: SizedBox(
-                  width: positionatedSizeBoxWidth,
-                  height: positionatedSizeBoxHeight,
+                  width: positionedSizeBoxWidth,
+                  height: positionedSizeBoxHeight,
                   child: FloatingActionButton(
                       key: floatingButtonKey,
                       heroTag: widget.movie.id,

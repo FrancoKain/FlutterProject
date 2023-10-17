@@ -22,22 +22,16 @@ void main() {
     );
     final SizedBox sizedBox = tester.widget(
       find.byKey(
-        const Key(
-          'sizedBoxMovieListImage',
-        ),
+        const Key('sizedBoxMovieListImage'),
       ),
     );
     expect(
       image.imageUrl,
-      equals(
-        'posterImage',
-      ),
+      equals('posterImage'),
     );
     expect(
       sizedBox.height,
-      equals(
-        100,
-      ),
+      equals(100),
     );
   });
 }

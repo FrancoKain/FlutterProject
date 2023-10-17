@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import '../../../domain/entities/genre.dart';
 import '../../../core/utils/styles.dart';
@@ -21,9 +20,7 @@ class GenresMovieDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(
-        bottom: paddingBottomGenres,
-      ),
+      padding: const EdgeInsets.only(bottom: paddingBottomGenres),
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(

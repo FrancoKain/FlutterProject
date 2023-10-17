@@ -20,9 +20,7 @@ class DrawerApp extends StatelessWidget {
           ListTile(
             title: const Text(
               homeText,
-              style: TextStyle(
-                color: Colors.white,
-              ),
+              style: TextStyle(color: Colors.white),
             ),
             onTap: () => Navigator.pushReplacement(
               context,
@@ -34,9 +32,7 @@ class DrawerApp extends StatelessWidget {
           ListTile(
             title: const Text(
               popularMoviesText,
-              style: TextStyle(
-                color: Colors.white,
-              ),
+              style: TextStyle(color: Colors.white),
             ),
             onTap: () => Navigator.pushReplacement(
               context,

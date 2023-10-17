@@ -53,9 +53,7 @@ class StreamBuilderTopRatedMovies extends StatelessWidget {
             );
           default:
             return const Center(
-              child: Text(
-                MyAppStyles.defaultMessage,
-              ),
+              child: Text(MyAppStyles.defaultMessage),
             );
         }
       },

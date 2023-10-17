@@ -17,9 +17,7 @@ class GenreApiProvider implements ApiService {
     );
     if (response.statusCode == HttpStatus.ok) {
       return GenrePageModel.fromJson(
-        json.decode(
-          response.body,
-        ),
+        json.decode(response.body),
       );
     } else {
       throw Exception(ApiConstants.errorMessage);

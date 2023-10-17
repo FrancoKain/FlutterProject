@@ -37,31 +37,21 @@ Future<void> main() async {
         ),
       );
     else {
-      return UiResourceState(
-        responseState: response,
-      );
+      return UiResourceState(responseState: response);
     }
   }
 
   final Stream<UiResourceState> topRatedMoviesDataLoading = Stream.fromFuture(
-    getData(
-      1,
-    ),
+    getData(1),
   );
   final Stream<UiResourceState> topRatedMoviesDataError = Stream.fromFuture(
-    getData(
-      2,
-    ),
+    getData(2),
   );
   final Stream<UiResourceState> topRatedMoviesDataSuccess = Stream.fromFuture(
-    getData(
-      3,
-    ),
+    getData(3),
   );
   final Stream<UiResourceState> topRatedMoviesDataEmpty = Stream.fromFuture(
-    getData(
-      4,
-    ),
+    getData(4),
   );
 
   group(
@@ -81,9 +71,7 @@ Future<void> main() async {
       await tester.pump();
       expect(
         find.byKey(
-          const Key(
-            'loadingResponseTopRated',
-          ),
+          const Key('loadingResponseTopRated'),
         ),
         findsOneWidget,
       );
@@ -102,9 +90,7 @@ Future<void> main() async {
       await tester.pumpAndSettle();
       expect(
         find.byKey(
-          const Key(
-            'errorResponseTopRated',
-          ),
+          const Key('errorResponseTopRated'),
         ),
         findsOneWidget,
       );
@@ -122,9 +108,7 @@ Future<void> main() async {
       );
       await tester.pumpAndSettle();
       expect(
-        find.byType(
-          TopRatedGridView,
-        ),
+        find.byType(TopRatedGridView),
         findsOneWidget,
       );
     });
@@ -142,9 +126,7 @@ Future<void> main() async {
       await tester.pumpAndSettle();
       expect(
         find.byKey(
-          const Key(
-            'emptyResponseTopRated',
-          ),
+          const Key('emptyResponseTopRated'),
         ),
         findsOneWidget,
       );

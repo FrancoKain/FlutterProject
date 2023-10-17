@@ -18,6 +18,7 @@ class MovieListPage extends StatefulWidget {
 
 class _MovieListPageState extends State<MovieListPage> {
   MovieListPageBloc movieListPageBloc = MovieListPageBloc();
+
   @override
   void initState() {
     movieListPageBloc.initialize();
@@ -30,9 +31,7 @@ class _MovieListPageState extends State<MovieListPage> {
       appBar: AppBar(
         title: const Text(
           MyAppStyles.appTitle,
-          style: TextStyle(
-            color: Colors.white54,
-          ),
+          style: TextStyle(color: Colors.white54),
         ),
         backgroundColor: Colors.black45,
       ),

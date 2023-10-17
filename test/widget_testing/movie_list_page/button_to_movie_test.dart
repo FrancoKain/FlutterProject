@@ -41,9 +41,7 @@ void main() {
     );
     await tester.tap(
       find.byKey(
-        const Key(
-          'ButtonNavigateToDetails',
-        ),
+        const Key('ButtonNavigateToDetails'),
       ),
     );
     await tester.pumpAndSettle();

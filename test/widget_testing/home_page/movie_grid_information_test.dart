@@ -74,7 +74,10 @@ void main() {
       );
       final CachedNetworkImage image =
           tester.widget(find.byKey(const Key('gridImageKey')));
-      expect(image.imageUrl, equals(movie.fullPosterPath));
+      expect(
+        image.imageUrl,
+        equals(movie.fullPosterPath),
+      );
     });
   });
 }

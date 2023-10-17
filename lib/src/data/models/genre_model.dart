@@ -13,14 +13,4 @@ class GenreModel {
       name: json['name'],
     );
   }
-
-  static List<GenreModel> genreList(List<dynamic> data) {
-    return data
-        .map(
-          (genre) => GenreModel.fromJson(
-            genre,
-          ),
-        )
-        .toList();
-  }
 }

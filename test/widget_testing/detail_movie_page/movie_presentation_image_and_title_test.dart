@@ -16,26 +16,18 @@ void main() {
       ),
     );
     final CachedNetworkImage image = tester.widget(
-      find.byType(
-        CachedNetworkImage,
-      ),
+      find.byType(CachedNetworkImage),
     );
     Text text = tester.widget(
-      find.byType(
-        Text,
-      ),
+      find.byType(Text),
     );
     expect(
       text.data,
-      equals(
-        'originalTitle',
-      ),
+      equals('originalTitle'),
     );
     expect(
       image.imageUrl,
-      equals(
-        'moviePoster',
-      ),
+      equals('moviePoster'),
     );
   });
 }

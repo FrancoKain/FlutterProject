@@ -38,18 +38,14 @@ class StreamBuilderPopularMovies extends StatelessWidget {
               key: errorPopularState,
               child: Text(
                 snapshot.error.toString(),
-                style: const TextStyle(
-                  color: Colors.white,
-                ),
+                style: const TextStyle(color: Colors.white),
               ),
             );
           case UiState.empty:
             return const Text(
               key: emptyPopularState,
               MyAppStyles.emptyMessage,
-              style: TextStyle(
-                color: Colors.white,
-              ),
+              style: TextStyle(color: Colors.white),
             );
           case UiState.success:
             return PopularMoviesListView(
@@ -59,9 +55,7 @@ class StreamBuilderPopularMovies extends StatelessWidget {
             );
           default:
             return const Center(
-              child: Text(
-                MyAppStyles.defaultMessage,
-              ),
+              child: Text(MyAppStyles.defaultMessage),
             );
         }
       },

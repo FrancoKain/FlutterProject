@@ -20,18 +20,12 @@ void main() {
       (WidgetTester tester) async {
     await tester.pumpWidget(
       MaterialApp(
-        home: GenresMovieDetails(
-          movieGenres: genres,
-        ),
+        home: GenresMovieDetails(movieGenres: genres),
       ),
     );
     expect(
-      find.byType(
-        GenreCard,
-      ),
-      findsNWidgets(
-        genres.length,
-      ),
+      find.byType(GenreCard),
+      findsNWidgets(genres.length),
     );
   });
 }

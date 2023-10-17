@@ -20,9 +20,7 @@ class MoviePresentation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(
-        left: leftPaddingListView,
-      ),
+      padding: const EdgeInsets.only(left: leftPaddingListView),
       child: Column(
         children: [
           MoviePresentationImageTitle(

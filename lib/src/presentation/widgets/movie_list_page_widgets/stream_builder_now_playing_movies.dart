@@ -23,9 +23,7 @@ class StreamBuilderNowPlayingMovies extends StatelessWidget {
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.8,
       child: StreamBuilder(
-        initialData: UiResourceState(
-          responseState: UiState.loading,
-        ),
+        initialData: UiResourceState(responseState: UiState.loading),
         stream: nowPlayingMoviesData,
         builder: (
           BuildContext context,
@@ -51,9 +49,7 @@ class StreamBuilderNowPlayingMovies extends StatelessWidget {
               return const Text(
                 key: emptyNowPlayingState,
                 MyAppStyles.emptyMessage,
-                style: TextStyle(
-                  color: Colors.white,
-                ),
+                style: TextStyle(color: Colors.white),
               );
             case UiState.success:
               return nowPlayingMoviesPageView(
@@ -63,9 +59,7 @@ class StreamBuilderNowPlayingMovies extends StatelessWidget {
               );
             default:
               return const Center(
-                child: Text(
-                  MyAppStyles.defaultMessage,
-                ),
+                child: Text(MyAppStyles.defaultMessage),
               );
           }
         },

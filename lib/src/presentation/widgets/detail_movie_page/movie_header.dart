@@ -1,4 +1,3 @@
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import '../../../core/utils/styles.dart';
@@ -26,12 +25,8 @@ class MovieHeader extends StatelessWidget {
       child: Stack(
         children: <Widget>[
           ClipRRect(
-            borderRadius: BorderRadius.circular(
-              borderRadiusImageBackDrop,
-            ),
-            child: CachedNetworkImage(
-              imageUrl: movieBackDrop,
-            ),
+            borderRadius: BorderRadius.circular(borderRadiusImageBackDrop),
+            child: CachedNetworkImage(imageUrl: movieBackDrop),
           ),
           Positioned.fill(
             child: Container(
@@ -51,9 +46,7 @@ class MovieHeader extends StatelessWidget {
             height: titleTextHeight,
             decoration: const BoxDecoration(
               borderRadius: BorderRadius.vertical(
-                bottom: Radius.circular(
-                  titleTextRadius,
-                ),
+                bottom: Radius.circular(titleTextRadius),
               ),
               gradient: LinearGradient(
                 colors: [

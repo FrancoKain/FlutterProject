@@ -10,34 +10,26 @@ UiResourceState mapToMovieAndGenresResponse(
   final genresSuccess;
   switch (movieResponse.responseState) {
     case ResponseState.loading:
-      return UiResourceState(
-        responseState: UiState.loading,
-      );
+      return UiResourceState(responseState: UiState.loading);
     case ResponseState.error:
       return UiResourceState(
         responseState: UiState.error,
         error: movieResponse.error,
       );
     case ResponseState.empty:
-      return UiResourceState(
-        responseState: UiState.empty,
-      );
+      return UiResourceState(responseState: UiState.empty);
     case ResponseState.success:
       movieSuccess = movieResponse.data;
       switch (genreResponse.responseState) {
         case ResponseState.loading:
-          return UiResourceState(
-            responseState: UiState.loading,
-          );
+          return UiResourceState(responseState: UiState.loading);
         case ResponseState.error:
           return UiResourceState(
             responseState: UiState.error,
             error: genreResponse.error,
           );
         case ResponseState.empty:
-          return UiResourceState(
-            responseState: UiState.empty,
-          );
+          return UiResourceState(responseState: UiState.empty);
         case ResponseState.success:
           genresSuccess = genreResponse.data;
           final MovieAndGenresResponse movieAndGenresResponse =

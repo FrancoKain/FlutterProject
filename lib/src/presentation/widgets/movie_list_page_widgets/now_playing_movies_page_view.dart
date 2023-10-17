@@ -21,9 +21,7 @@ class nowPlayingMoviesPageView extends StatelessWidget {
   final List<Genre> allGenres;
 
   static const String nowPlayingTextTitle = "Now Playing";
-  static const Key gestureDetectorKey = Key(
-    'PageViewNavigateToDetails',
-  );
+  static const Key gestureDetectorKey = Key('PageViewNavigateToDetails');
 
   static const double nowPlayingTitleFontSize = 30;
   static const double pageViewSizeBoxHeight = 700;
@@ -61,8 +59,7 @@ class nowPlayingMoviesPageView extends StatelessWidget {
                     clipBehavior: Clip.hardEdge,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(
-                        MyAppStyles.movieListPageRadius,
-                      ),
+                          MyAppStyles.movieListPageRadius),
                     ),
                     child: CachedNetworkImage(
                       fit: BoxFit.cover,

@@ -18,15 +18,11 @@ void main() {
       ),
     );
     expect(
-      find.byType(
-        StarRate,
-      ),
+      find.byType(StarRate),
       findsOneWidget,
     );
     expect(
-      find.byType(
-        MoviePresentationImageTitle,
-      ),
+      find.byType(MoviePresentationImageTitle),
       findsOneWidget,
     );
   });

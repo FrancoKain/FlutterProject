@@ -15,15 +15,9 @@ DataState successGenre = DataState(
   responseState: ResponseState.success,
   data: genres,
 );
-DataState error = DataState(
-  responseState: ResponseState.error,
-);
-DataState empty = DataState(
-  responseState: ResponseState.empty,
-);
-DataState loading = DataState(
-  responseState: ResponseState.loading,
-);
+DataState error = DataState(responseState: ResponseState.error);
+DataState empty = DataState(responseState: ResponseState.empty);
+DataState loading = DataState(responseState: ResponseState.loading);
 
 void main() {
   group(
@@ -39,9 +33,7 @@ void main() {
       expect(
         response,
         equals(
-          UiResourceState(
-            responseState: UiState.error,
-          ),
+          UiResourceState(responseState: UiState.error),
         ),
       );
     });
@@ -55,9 +47,7 @@ void main() {
       expect(
         response,
         equals(
-          UiResourceState(
-            responseState: UiState.empty,
-          ),
+          UiResourceState(responseState: UiState.empty),
         ),
       );
     });
@@ -71,9 +61,7 @@ void main() {
       expect(
         response,
         equals(
-          UiResourceState(
-            responseState: UiState.error,
-          ),
+          UiResourceState(responseState: UiState.error),
         ),
       );
     });
@@ -87,9 +75,7 @@ void main() {
       expect(
         response,
         equals(
-          UiResourceState(
-            responseState: UiState.loading,
-          ),
+          UiResourceState(responseState: UiState.loading),
         ),
       );
     });
@@ -103,9 +89,7 @@ void main() {
       expect(
         response,
         equals(
-          UiResourceState(
-            responseState: UiState.loading,
-          ),
+          UiResourceState(responseState: UiState.loading),
         ),
       );
     });
@@ -119,9 +103,7 @@ void main() {
       expect(
         response,
         equals(
-          UiResourceState(
-            responseState: UiState.empty,
-          ),
+          UiResourceState(responseState: UiState.empty),
         ),
       );
     });
@@ -135,9 +117,7 @@ void main() {
       expect(
         response,
         equals(
-          UiResourceState(
-            responseState: UiState.success,
-          ),
+          UiResourceState(responseState: UiState.success),
         ),
       );
     });

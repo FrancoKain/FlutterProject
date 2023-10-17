@@ -7,12 +7,9 @@ class GetGenresUseCase {
   final ApiService api = GenreApiProvider();
   final GenreRepository genreRepo;
 
-  GetGenresUseCase({
-    GenreRepository? moviesRepository,
-  }) : genreRepo = moviesRepository ??
-            GenreRepository(
-              api: GenreApiProvider(),
-            );
+  GetGenresUseCase({GenreRepository? moviesRepository})
+      : genreRepo =
+            moviesRepository ?? GenreRepository(api: GenreApiProvider());
 
   Future<DataState> getGenres() async {
     return await genreRepo.getData();

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import '../../../core/utils/styles.dart';
 
@@ -13,9 +12,7 @@ class ButtonSection extends StatefulWidget {
 
 class _ButtonSectionState extends State<ButtonSection> {
   int _counter = 0;
-  static const Color buttonColor = Color(
-    0xffAB0034,
-  );
+  static const Color buttonColor = Color(0xffAB0034);
 
   static const String counterText = 'People who liked the movie: ';
 
@@ -41,9 +38,8 @@ class _ButtonSectionState extends State<ButtonSection> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(
-              top: paddingBetweenCounterTextAndButton,
-            ),
+            padding:
+                const EdgeInsets.only(top: paddingBetweenCounterTextAndButton),
             child: Stack(
               children: [
                 InkWell(
@@ -55,16 +51,12 @@ class _ButtonSectionState extends State<ButtonSection> {
                       shape: BoxShape.circle,
                       color: buttonColor,
                     ),
-                    child: const Icon(
-                      Icons.favorite,
-                    ),
+                    child: const Icon(Icons.favorite),
                   ),
                 ),
                 Text(
                   "$_counter",
-                  style: const TextStyle(
-                    color: Colors.white,
-                  ),
+                  style: const TextStyle(color: Colors.white),
                 ),
               ],
             ),

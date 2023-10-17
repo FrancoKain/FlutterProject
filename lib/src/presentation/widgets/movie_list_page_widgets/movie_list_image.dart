@@ -12,9 +12,7 @@ class MovieListImage extends StatelessWidget {
   final String posterImage;
   final double cardSize;
 
-  static const Key sizeBoxMovieListImageKey = Key(
-    'sizedBoxMovieListImage',
-  );
+  static const Key sizeBoxMovieListImageKey = Key('sizedBoxMovieListImage');
 
   @override
   Widget build(BuildContext context) {
@@ -24,9 +22,7 @@ class MovieListImage extends StatelessWidget {
       child: Card(
         clipBehavior: Clip.hardEdge,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(
-            MyAppStyles.movieListPageRadius,
-          ),
+          borderRadius: BorderRadius.circular(MyAppStyles.movieListPageRadius),
         ),
         child: CachedNetworkImage(
           fit: BoxFit.cover,

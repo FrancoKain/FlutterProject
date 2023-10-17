@@ -14,14 +14,16 @@ class TopRatedMoviesBloc extends IBloc {
   StreamController<UiResourceState> _movieStream =
       StreamController<UiResourceState>.broadcast();
 
-  TopRatedMoviesBloc(){
-    getTopRatedMovies = GetMoviesByEndPointUseCase(endpoint: endPointTopRatedMovies);
+  TopRatedMoviesBloc() {
+    getTopRatedMovies =
+        GetMoviesByEndPointUseCase(endpoint: endPointTopRatedMovies);
     getGenresUseCase = GetGenresUseCase();
   }
+
   TopRatedMoviesBloc.fromMock({
     required this.getTopRatedMovies,
     required this.getGenresUseCase,
-});
+  });
 
   @override
   void dispose() {
@@ -31,9 +33,7 @@ class TopRatedMoviesBloc extends IBloc {
   @override
   void initialize() async {
     _movieStream.sink.add(
-      UiResourceState(
-        responseState: UiState.loading,
-      ),
+      UiResourceState(responseState: UiState.loading),
     );
     final genreResponse = await getGenresUseCase.getGenres();
     final movieResponse = await getTopRatedMovies.getData();

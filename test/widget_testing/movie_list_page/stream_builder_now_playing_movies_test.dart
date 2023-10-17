@@ -37,31 +37,21 @@ Future<void> main() async {
         ),
       );
     else {
-      return UiResourceState(
-        responseState: response,
-      );
+      return UiResourceState(responseState: response);
     }
   }
 
   final Stream<UiResourceState> nowPlayingMoviesDataLoading = Stream.fromFuture(
-    getData(
-      1,
-    ),
+    getData(1),
   );
   final Stream<UiResourceState> nowPlayingMoviesDataError = Stream.fromFuture(
-    getData(
-      2,
-    ),
+    getData(2),
   );
   final Stream<UiResourceState> nowPlayingMoviesDataSuccess = Stream.fromFuture(
-    getData(
-      3,
-    ),
+    getData(3),
   );
   final Stream<UiResourceState> nowPlayingMoviesDataEmpty = Stream.fromFuture(
-    getData(
-      4,
-    ),
+    getData(4),
   );
 
   group(
@@ -80,9 +70,7 @@ Future<void> main() async {
       );
       await tester.pump();
       expect(
-        find.byKey(
-          const Key('loadingResponseNowPlaying'),
-        ),
+        find.byKey(const Key('loadingResponseNowPlaying')),
         findsOneWidget,
       );
     });
@@ -99,9 +87,7 @@ Future<void> main() async {
       );
       await tester.pumpAndSettle();
       expect(
-        find.byKey(
-          const Key('errorResponseNowPlaying'),
-        ),
+        find.byKey(const Key('errorResponseNowPlaying')),
         findsOneWidget,
       );
     });
@@ -118,9 +104,7 @@ Future<void> main() async {
       );
       await tester.pumpAndSettle();
       expect(
-        find.byType(
-          nowPlayingMoviesPageView,
-        ),
+        find.byType(nowPlayingMoviesPageView),
         findsOneWidget,
       );
     });
@@ -137,9 +121,7 @@ Future<void> main() async {
       );
       await tester.pumpAndSettle();
       expect(
-        find.byKey(
-          const Key('emptyResponseNowPlaying'),
-        ),
+        find.byKey(const Key('emptyResponseNowPlaying')),
         findsOneWidget,
       );
     });

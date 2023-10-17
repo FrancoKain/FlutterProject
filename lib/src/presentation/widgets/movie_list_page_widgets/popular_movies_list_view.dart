@@ -28,17 +28,14 @@ class PopularMoviesListView extends StatelessWidget {
       itemCount: movies.length,
       itemBuilder: (
         BuildContext context,
-         int index,
+        int index,
       ) {
         return Padding(
-          padding: const EdgeInsets.all(
-            MyAppStyles.movieListPadding,
-          ),
+          padding: const EdgeInsets.all(MyAppStyles.movieListPadding),
           child: Container(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(
-                MyAppStyles.movieListPageRadius,
-              ),
+              borderRadius:
+                  BorderRadius.circular(MyAppStyles.movieListPageRadius),
               color: MovieListPage.cardColor,
             ),
             child: MovieListInformation(

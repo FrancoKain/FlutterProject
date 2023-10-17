@@ -27,9 +27,7 @@ class MoviePresentationImageTitle extends StatelessWidget {
         Card(
           clipBehavior: Clip.hardEdge,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(
-              borderRadiusPoster,
-            ),
+            borderRadius: BorderRadius.circular(borderRadiusPoster),
           ),
           child: CachedNetworkImage(
             height: imageHeightPoster,
@@ -39,9 +37,7 @@ class MoviePresentationImageTitle extends StatelessWidget {
         SizedBox(
           width: sizeofOriginalTitleBox,
           child: Padding(
-            padding: const EdgeInsets.only(
-              left: leftPaddingImageOriginalTitle,
-            ),
+            padding: const EdgeInsets.only(left: leftPaddingImageOriginalTitle),
             child: Text(
               movieOriginalTitle,
               style: MyAppStyles.titles,

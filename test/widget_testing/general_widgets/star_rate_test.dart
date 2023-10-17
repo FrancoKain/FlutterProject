@@ -17,28 +17,16 @@ void main() {
       ),
     );
     expect(
-      find.byIcon(
-        Icons.star,
-      ),
-      findsNWidgets(
-        2,
-      ),
+      find.byIcon(Icons.star),
+      findsNWidgets(2),
     );
     expect(
-      find.byIcon(
-        Icons.star_half,
-      ),
-      findsNWidgets(
-        1,
-      ),
+      find.byIcon(Icons.star_half),
+      findsNWidgets(1),
     );
     expect(
-      find.byIcon(
-        Icons.star_border,
-      ),
-      findsNWidgets(
-        2,
-      ),
+      find.byIcon(Icons.star_border),
+      findsNWidgets(2),
     );
   });
 }

@@ -20,6 +20,7 @@ class MockGetTopRatedMovies implements GetMoviesByEndPointUseCase {
       ),
     );
   }
+
   @override
   // TODO: implement endpoint
   String get endpoint => throw UnimplementedError();
@@ -56,9 +57,7 @@ void main() {
     expectLater(
       topRatedStream,
       emitsInOrder([
-        UiResourceState(
-          responseState: UiState.loading,
-        ),
+        UiResourceState(responseState: UiState.loading),
         UiResourceState(
           responseState: UiState.success,
           data: [],

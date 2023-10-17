@@ -1,4 +1,4 @@
-import 'package:flutter_project/src/domain/entities/genre.dart';
+import '../../domain/entities/genre.dart';
 
 extension getGenres on List<Genre> {
   List<Genre> getGenresById(

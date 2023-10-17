@@ -77,9 +77,7 @@ void main() {
     expectLater(
       popularStream,
       emitsInOrder([
-        UiResourceState(
-          responseState: UiState.loading,
-        ),
+        UiResourceState(responseState: UiState.loading),
         UiResourceState(
           responseState: UiState.success,
           data: [],
@@ -89,9 +87,7 @@ void main() {
     expectLater(
       nowPlayingStream,
       emitsInOrder([
-        UiResourceState(
-          responseState: UiState.loading,
-        ),
+        UiResourceState(responseState: UiState.loading),
         UiResourceState(
           responseState: UiState.success,
           data: [],

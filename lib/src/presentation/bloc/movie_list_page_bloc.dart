@@ -22,12 +22,15 @@ class MovieListPageBloc extends IBloc {
   Stream<UiResourceState> get nowPlayingMoviesStream =>
       _nowPlayingMovieStateStream.stream;
 
-  Stream<UiResourceState> get popularMoviesStream => _popularMovieStateStream.stream;
+  Stream<UiResourceState> get popularMoviesStream =>
+      _popularMovieStateStream.stream;
 
   MovieListPageBloc() {
     this.getGenresUseCase = GetGenresUseCase();
-    this.getNowPlayingMovies = GetMoviesByEndPointUseCase(endpoint: endpointNowPlayingMovies);
-    this.getPopularMovies = GetMoviesByEndPointUseCase(endpoint: endpointPopularMovies);
+    this.getNowPlayingMovies =
+        GetMoviesByEndPointUseCase(endpoint: endpointNowPlayingMovies);
+    this.getPopularMovies =
+        GetMoviesByEndPointUseCase(endpoint: endpointPopularMovies);
   }
 
   MovieListPageBloc.fromMock({
@@ -45,17 +48,12 @@ class MovieListPageBloc extends IBloc {
   @override
   void initialize() async {
     _popularMovieStateStream.sink.add(
-      UiResourceState(
-        responseState: UiState.loading,
-      ),
+      UiResourceState(responseState: UiState.loading),
     );
     _nowPlayingMovieStateStream.sink.add(
-      UiResourceState(
-        responseState: UiState.loading,
-      ),
+      UiResourceState(responseState: UiState.loading),
     );
-    final popularMovieResponse =
-        await getPopularMovies.getData();
+    final popularMovieResponse = await getPopularMovies.getData();
     final genreResponse = await getGenresUseCase.getGenres();
     _popularMovieStateStream.sink.add(
       checkAndConvertIntoResponse(

@@ -25,9 +25,8 @@ class MovieListInformation extends StatelessWidget {
 
   static const int movieTitleMaxLines = 3;
 
-  static const Key movieInformationTitleTextKey = Key(
-    'movieListInformationTitleText',
-  );
+  static const Key movieInformationTitleTextKey =
+      Key('movieListInformationTitleText');
 
   @override
   Widget build(BuildContext context) {
@@ -38,9 +37,7 @@ class MovieListInformation extends StatelessWidget {
           posterImage: movie.fullPosterPath,
         ),
         Padding(
-          padding: const EdgeInsets.only(
-            left: paddingBetweenImageAndInfo,
-          ),
+          padding: const EdgeInsets.only(left: paddingBetweenImageAndInfo),
           child: SizedBox(
             height: cardSizeHeight,
             child: Column(
@@ -58,9 +55,7 @@ class MovieListInformation extends StatelessWidget {
                     ),
                   ),
                 ),
-                GenreListMovieListPage(
-                  genres: genres,
-                ),
+                GenreListMovieListPage(genres: genres),
                 StarRate(
                   starColor: MyAppStyles.starColor,
                   rate: movie.rate,

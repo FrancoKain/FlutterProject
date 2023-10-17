@@ -11,14 +11,10 @@ void main() {
       ),
     );
     final Text text = tester.widget(
-      find.byType(
-        Text,
-      ),
+      find.byType(Text),
     );
     final Icon icon = tester.widget(
-      find.byType(
-        Icon,
-      ),
+      find.byType(Icon),
     );
     expect(
       text.data,
@@ -26,9 +22,7 @@ void main() {
     );
     expect(
       icon.icon,
-      equals(
-        Icons.search,
-      ),
+      equals(Icons.search),
     );
   });
 }

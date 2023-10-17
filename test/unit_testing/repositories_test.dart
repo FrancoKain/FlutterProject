@@ -53,9 +53,7 @@ class MovieApiProviderSuccess implements ApiService {
 
   @override
   Future<MoviePageModel> fetch(_) async {
-    return await MoviePageModel.fromJson(
-       map,
-    );
+    return await MoviePageModel.fromJson(map);
   }
 }
 
@@ -69,9 +67,7 @@ class MovieApiProvideEmpty implements ApiService {
 
   @override
   Future<MoviePageModel> fetch(_) async {
-    return await MoviePageModel.fromJson(
-       emptyMap,
-    );
+    return await MoviePageModel.fromJson(emptyMap);
   }
 }
 
@@ -91,40 +87,30 @@ class GenreApiProvideSuccess implements ApiService {
 
   @override
   Future<GenrePageModel> fetch(String url) async {
-    return await GenrePageModel.fromJson(
-      map,
-    );
+    return await GenrePageModel.fromJson(map);
   }
 }
 
 class GenreApiProvideEmpty implements ApiService {
-  final Map<String, dynamic> map = {
-    'genres': [],
-  };
+  final Map<String, dynamic> map = {'genres': []};
 
   @override
   Future<GenrePageModel> fetch(String url) async {
-    return await GenrePageModel.fromJson(
-      map,
-    );
+    return await GenrePageModel.fromJson(map);
   }
 }
 
 class MovieApiProviderFailure implements ApiService {
   @override
   Future fetch(String url) {
-    throw const SocketException(
-      'Exception',
-    );
+    throw const SocketException('Exception');
   }
 }
 
 class GenreApiProvideFailure implements ApiService {
   @override
   Future fetch(String url) {
-    throw const SocketException(
-      'Exception',
-    );
+    throw const SocketException('Exception');
   }
 }
 
@@ -136,14 +122,10 @@ void main() {
       MoviesRepository repo = MoviesRepository(
         api: MovieApiProviderSuccess(),
       );
-      DataState result = await repo.getData(
-        'success',
-      );
+      DataState result = await repo.getData('success');
       expect(
         result.responseState,
-        equals(
-          ResponseState.success,
-        ),
+        equals(ResponseState.success),
       );
     });
 
@@ -153,14 +135,10 @@ void main() {
       MoviesRepository repo = MoviesRepository(
         api: MovieApiProvideEmpty(),
       );
-      DataState result = await repo.getData(
-        'empty',
-      );
+      DataState result = await repo.getData('empty');
       expect(
         result.responseState,
-        equals(
-          ResponseState.empty,
-        ),
+        equals(ResponseState.empty),
       );
     });
 
@@ -170,14 +148,10 @@ void main() {
       MoviesRepository repo = MoviesRepository(
         api: MovieApiProviderFailure(),
       );
-      DataState result = await repo.getData(
-        '',
-      );
+      DataState result = await repo.getData('');
       expect(
         result.responseState,
-        equals(
-          ResponseState.error,
-        ),
+        equals(ResponseState.error),
       );
     });
 
@@ -187,14 +161,10 @@ void main() {
       GenreRepository repo = GenreRepository(
         api: GenreApiProvideSuccess(),
       );
-      DataState result = await repo.getData(
-        'success',
-      );
+      DataState result = await repo.getData('success');
       expect(
         result.responseState,
-        equals(
-          ResponseState.success,
-        ),
+        equals(ResponseState.success),
       );
     });
 
@@ -204,14 +174,10 @@ void main() {
       GenreRepository repo = GenreRepository(
         api: GenreApiProvideEmpty(),
       );
-      DataState result = await repo.getData(
-        'empty',
-      );
+      DataState result = await repo.getData('empty');
       expect(
         result.responseState,
-        equals(
-          ResponseState.empty,
-        ),
+        equals(ResponseState.empty),
       );
     });
 
@@ -221,14 +187,10 @@ void main() {
       GenreRepository repo = GenreRepository(
         api: GenreApiProvideFailure(),
       );
-      DataState result = await repo.getData(
-        '',
-      );
+      DataState result = await repo.getData('');
       expect(
         result.responseState,
-        equals(
-          ResponseState.error,
-        ),
+        equals(ResponseState.error),
       );
     });
   });

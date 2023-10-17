@@ -18,13 +18,9 @@ class TopRatedGridView extends StatelessWidget {
   final List<Movie> movies;
   final List<Genre> genres;
 
-  static const Key gridViewHomePageKey = Key(
-    'homePageGridView',
-  );
+  static const Key gridViewHomePageKey = Key('homePageGridView');
 
-  static const Key movieGridInformationKey = Key(
-    'movieGridInformation',
-  );
+  static const Key movieGridInformationKey = Key('movieGridInformation');
 
   static const int crossAxisCount = 2;
   static const double crossAxisSpacing = 12;
@@ -35,9 +31,7 @@ class TopRatedGridView extends StatelessWidget {
   Widget build(BuildContext context) {
     return GridView.builder(
       key: gridViewHomePageKey,
-      padding: const EdgeInsets.only(
-        top: paddingTopGridView,
-      ),
+      padding: const EdgeInsets.only(top: paddingTopGridView),
       itemCount: movies.length,
       itemBuilder: (
         BuildContext context,
@@ -46,9 +40,7 @@ class TopRatedGridView extends StatelessWidget {
         return MovieGridInformation(
           key: movieGridInformationKey,
           movie: movies[index],
-          genres: genres.getGenresById(
-            movies[index].genresIds,
-          ),
+          genres: genres.getGenresById(movies[index].genresIds),
         );
       },
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

@@ -43,21 +43,15 @@ void main() {
     );
     expect(
       find.byKey(
-        const Key(
-          'homePageGridView',
-        ),
+        const Key('homePageGridView'),
       ),
       findsOneWidget,
     );
     expect(
       find.byKey(
-        const Key(
-          'movieGridInformation',
-        ),
+        const Key('movieGridInformation'),
       ),
-      findsNWidgets(
-        2,
-      ),
+      findsNWidgets(2),
     );
   });
 }
