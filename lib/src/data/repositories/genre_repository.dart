@@ -1,5 +1,4 @@
-import 'package:flutter_project/src/core/api_constants.dart';
-
+import '../../../src/core/api_constants.dart';
 import '../../core/utils/state.dart';
 import '../../domain/entities/genre.dart';
 import '../../domain/repositories/i_repository.dart';

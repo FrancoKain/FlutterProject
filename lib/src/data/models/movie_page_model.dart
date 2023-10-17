@@ -16,9 +16,9 @@ class MoviePageModel {
   factory MoviePageModel.fromJson(Map json) {
     return MoviePageModel(
       page: json['page'],
-      results: MovieModel.movieList(
-        List.from(json['results']),
-      ),
+      results: List.from(json['results'])
+          .map((movie) => MovieModel.fromJson(movie))
+          .toList(),
       totalPages: json['total_pages'],
       totalResults: json['total_results'],
     );

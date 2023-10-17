@@ -49,16 +49,4 @@ class MovieModel {
       voteCount: json['vote_count'] as int,
     );
   }
-
-  static List<MovieModel> movieList(List<dynamic> data) {
-    if (data.isNotEmpty) {
-      return data
-          .map(
-            (movie) => MovieModel.fromJson(movie),
-          )
-          .toList();
-    } else {
-      return [];
-    }
-  }
 }
