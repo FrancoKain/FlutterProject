@@ -13,23 +13,23 @@ class MoviesRepository implements MyRepository {
 
   final ApiService api;
 
+  String mappingCategoryIntoEndPoint(MovieCategory category){
+    switch (category) {
+      case MovieCategory.popular:
+        return "movie/popular?";
+      case MovieCategory.nowPlaying:
+        return "movie/now_playing?";
+      case MovieCategory.topRated:
+         return "movie/top_rated?";
+      default:
+        return "";
+    }
+  }
+
   @override
   Future<DataState> getData(MovieCategory category) async {
     try {
-      String url = "";
-      switch (category) {
-        case MovieCategory.popular:
-          url = "movie/popular?";
-          break;
-        case MovieCategory.nowPlaying:
-          url = "movie/now_playing?";
-          break;
-        case MovieCategory.topRated:
-          url = "movie/top_rated?";
-          break;
-        default:
-          break;
-      }
+      String url = mappingCategoryIntoEndPoint(category);
       final MoviePageModel response = await api.fetch(url);
       if (response.results.isEmpty) {
         return DataState(responseState: ResponseState.empty);
