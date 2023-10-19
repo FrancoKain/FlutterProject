@@ -11,14 +11,13 @@ import '../../core/utils/bloc_utils.dart';
 class MovieListPageBloc extends IBloc {
   late GetMoviesByEndPointUseCase getPopularMovies;
   late GetGenresUseCase getGenresUseCase;
-  final String endpointNowPlayingMovies = "movie/now_playing?";
-  final String endpointPopularMovies = "movie/popular?";
   late GetMoviesByEndPointUseCase getNowPlayingMovies;
   StreamController<UiResourceState> _popularMovieStateStream =
       StreamController<UiResourceState>.broadcast();
   StreamController<UiResourceState> _nowPlayingMovieStateStream =
       StreamController<UiResourceState>.broadcast();
 
+  final MovieCategory category = MovieCategory.nowPlaying ;
   Stream<UiResourceState> get nowPlayingMoviesStream =>
       _nowPlayingMovieStateStream.stream;
 
@@ -28,9 +27,9 @@ class MovieListPageBloc extends IBloc {
   MovieListPageBloc() {
     this.getGenresUseCase = GetGenresUseCase();
     this.getNowPlayingMovies =
-        GetMoviesByEndPointUseCase(endpoint: endpointNowPlayingMovies);
+        GetMoviesByEndPointUseCase(category: MovieCategory.nowPlaying);
     this.getPopularMovies =
-        GetMoviesByEndPointUseCase(endpoint: endpointPopularMovies);
+        GetMoviesByEndPointUseCase(category: MovieCategory.popular);
   }
 
   MovieListPageBloc.fromMock({

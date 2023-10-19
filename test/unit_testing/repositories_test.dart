@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:flutter_project/src/core/utils/bloc_utils.dart';
+
 import '../../lib/src/core/utils/state.dart';
 import '../../lib/src/data/datasource/remote/i_api_service.dart';
 import '../../lib/src/data/models/genre_page_model.dart';
@@ -122,7 +124,7 @@ void main() {
       MoviesRepository repo = MoviesRepository(
         api: MovieApiProviderSuccess(),
       );
-      DataState result = await repo.getData('success');
+      DataState result = await repo.getData(MovieCategory.popular);
       expect(
         result.responseState,
         equals(ResponseState.success),
@@ -135,7 +137,7 @@ void main() {
       MoviesRepository repo = MoviesRepository(
         api: MovieApiProvideEmpty(),
       );
-      DataState result = await repo.getData('empty');
+      DataState result = await repo.getData(MovieCategory.popular);
       expect(
         result.responseState,
         equals(ResponseState.empty),
@@ -148,7 +150,7 @@ void main() {
       MoviesRepository repo = MoviesRepository(
         api: MovieApiProviderFailure(),
       );
-      DataState result = await repo.getData('');
+      DataState result = await repo.getData(MovieCategory.popular);
       expect(
         result.responseState,
         equals(ResponseState.error),
@@ -161,7 +163,7 @@ void main() {
       GenreRepository repo = GenreRepository(
         api: GenreApiProvideSuccess(),
       );
-      DataState result = await repo.getData('success');
+      DataState result = await repo.getData();
       expect(
         result.responseState,
         equals(ResponseState.success),
@@ -174,7 +176,7 @@ void main() {
       GenreRepository repo = GenreRepository(
         api: GenreApiProvideEmpty(),
       );
-      DataState result = await repo.getData('empty');
+      DataState result = await repo.getData();
       expect(
         result.responseState,
         equals(ResponseState.empty),
@@ -187,7 +189,7 @@ void main() {
       GenreRepository repo = GenreRepository(
         api: GenreApiProvideFailure(),
       );
-      DataState result = await repo.getData('');
+      DataState result = await repo.getData();
       expect(
         result.responseState,
         equals(ResponseState.error),

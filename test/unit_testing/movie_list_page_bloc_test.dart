@@ -1,3 +1,5 @@
+import 'package:flutter_project/src/core/utils/bloc_utils.dart';
+
 import '../../lib/src/core/utils/state.dart';
 import '../../lib/src/core/utils/ui_resource_state.dart';
 import '../../lib/src/data/datasource/remote/i_api_service.dart';
@@ -11,10 +13,6 @@ import 'package:flutter_test/flutter_test.dart';
 
 class MockGetPopularMoviesUseCase implements GetMoviesByEndPointUseCase {
   @override
-  // TODO: implement endpoint
-  String get endpoint => throw UnimplementedError();
-
-  @override
   Future<DataState> getData() {
     List<Movie> movies = [];
 
@@ -25,6 +23,10 @@ class MockGetPopularMoviesUseCase implements GetMoviesByEndPointUseCase {
       ),
     );
   }
+
+  @override
+  // TODO: implement category
+  MovieCategory get category => throw UnimplementedError();
 }
 
 class MockGetNowPlayingMovies implements GetMoviesByEndPointUseCase {
@@ -40,8 +42,8 @@ class MockGetNowPlayingMovies implements GetMoviesByEndPointUseCase {
   }
 
   @override
-  // TODO: implement endpoint
-  String get endpoint => throw UnimplementedError();
+  // TODO: implement category
+  MovieCategory get category => throw UnimplementedError();
 }
 
 class MockGetGenresUseCase implements GetGenresUseCase {

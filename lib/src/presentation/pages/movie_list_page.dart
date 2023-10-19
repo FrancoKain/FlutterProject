@@ -8,9 +8,7 @@ import '../widgets/movie_list_page_widgets/stream_builder_popular_movies.dart';
 class MovieListPage extends StatefulWidget {
   const MovieListPage({super.key});
 
-  static const Color cardColor = Color(
-    0xff2B1C2B,
-  );
+  static const Color cardColor = Color(0xff2B1C2B);
 
   @override
   State<MovieListPage> createState() => _MovieListPageState();

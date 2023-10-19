@@ -10,13 +10,11 @@ import '../../domain/user_cases/implementation/get_movies_by_endpoint_use_case.d
 class TopRatedMoviesBloc extends IBloc {
   late final GetMoviesByEndPointUseCase getTopRatedMovies;
   late final GetGenresUseCase getGenresUseCase;
-  final String endPointTopRatedMovies = "movie/top_rated?";
   StreamController<UiResourceState> _movieStream =
       StreamController<UiResourceState>.broadcast();
 
   TopRatedMoviesBloc() {
-    getTopRatedMovies =
-        GetMoviesByEndPointUseCase(endpoint: endPointTopRatedMovies);
+    getTopRatedMovies = GetMoviesByEndPointUseCase(category: MovieCategory.topRated);
     getGenresUseCase = GetGenresUseCase();
   }
 

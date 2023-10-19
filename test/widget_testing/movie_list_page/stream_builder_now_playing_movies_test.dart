@@ -104,7 +104,7 @@ Future<void> main() async {
       );
       await tester.pumpAndSettle();
       expect(
-        find.byType(nowPlayingMoviesPageView),
+        find.byType(NowPlayingMoviesPageView),
         findsOneWidget,
       );
     });

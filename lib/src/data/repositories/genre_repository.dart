@@ -1,22 +1,21 @@
-import '../../../src/core/api_constants.dart';
+import '../../core/api_constants.dart';
 import '../../core/utils/state.dart';
 import '../../domain/entities/genre.dart';
-import '../../domain/repositories/i_repository.dart';
 import '../datasource/remote/i_api_service.dart';
 import '../mappers/to_genre_mapper.dart';
 import '../models/genre_page_model.dart';
+import '../../domain/repositories/i_genre_repository.dart';
 
-class GenreRepository implements MyRepository {
-  late List<Genre> listGenres;
+class GenreRepository implements MyGenreRepository {
 
   GenreRepository({required this.api});
 
   final ApiService api;
 
   @override
-  Future<DataState> getData([String url = ""]) async {
+  Future<DataState> getData() async {
     try {
-      final GenrePageModel response = await api.fetch(url);
+      final GenrePageModel response = await api.fetch("");
       if (response.results.isEmpty) {
         return DataState(responseState: ResponseState.empty);
       } else {

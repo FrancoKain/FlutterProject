@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../core/utils/ui_resource_state.dart';
 import '../bloc/top_rated_movies_bloc.dart';
 import '../widgets/general_widgets/drawer_app.dart';
 
@@ -13,13 +12,9 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   TopRatedMoviesBloc topRatedMoviesBloc = TopRatedMoviesBloc();
-
-  late Stream<UiResourceState> topRatedMoviesData;
-
   @override
   void initState() {
     topRatedMoviesBloc.initialize();
-    topRatedMoviesData = topRatedMoviesBloc.topRatedMoviesStream;
     super.initState();
   }
 
@@ -37,7 +32,7 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: MyAppStyles.backgroundColor,
       body: StreamBuilderTopRatedMovies(
         topRatedMoviesBloc: topRatedMoviesBloc,
-        topRatedMoviesData: topRatedMoviesData,
+        topRatedMoviesData: topRatedMoviesBloc.topRatedMoviesStream,
       ),
     );
   }

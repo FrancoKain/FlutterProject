@@ -5,23 +5,20 @@ import 'package:flutter_project/src/core/utils/extensions.dart';
 import '../../../core/utils/styles.dart';
 import '../../../domain/entities/genre.dart';
 import '../../../domain/entities/movie.dart';
-import '../../bloc/movie_list_page_bloc.dart';
 import '../../pages/detail_movie_page.dart';
 
-class nowPlayingMoviesPageView extends StatelessWidget {
-  const nowPlayingMoviesPageView({
+class NowPlayingMoviesPageView extends StatelessWidget {
+  const NowPlayingMoviesPageView({
     super.key,
     required this.movies,
     required this.allGenres,
-    required this.bloc,
   });
 
-  final MovieListPageBloc bloc;
   final List<Movie> movies;
   final List<Genre> allGenres;
 
   static const String nowPlayingTextTitle = "Now Playing";
-  static const Key gestureDetectorKey = Key('PageViewNavigateToDetails');
+  static const String gestureDetectorKey = "PageViewNavigateToDetails";
 
   static const double nowPlayingTitleFontSize = 30;
   static const double pageViewSizeBoxHeight = 700;
@@ -39,7 +36,7 @@ class nowPlayingMoviesPageView extends StatelessWidget {
                 movieNumber < movies.length;
                 movieNumber++)
               GestureDetector(
-                key: gestureDetectorKey,
+                key: Key("$gestureDetectorKey$movieNumber"),
                 onTapUp: (_) {
                   Navigator.push(
                     context,

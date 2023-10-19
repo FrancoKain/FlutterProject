@@ -1,3 +1,5 @@
+import 'package:flutter_project/src/core/utils/bloc_utils.dart';
+
 import '../../lib/src/domain/user_cases/implementation/get_movies_by_endpoint_use_case.dart';
 import '../../lib/src/core/utils/state.dart';
 import '../../lib/src/core/utils/ui_resource_state.dart';
@@ -22,8 +24,9 @@ class MockGetTopRatedMovies implements GetMoviesByEndPointUseCase {
   }
 
   @override
-  // TODO: implement endpoint
-  String get endpoint => throw UnimplementedError();
+  // TODO: implement category
+  MovieCategory get category => throw UnimplementedError();
+
 }
 
 class MockGetGenresUseCase implements GetGenresUseCase {

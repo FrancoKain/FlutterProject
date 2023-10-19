@@ -5,19 +5,19 @@ import '../../lib/src/domain/entities/genre.dart';
 import '../../lib/src/domain/entities/movie.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-List<Movie> movies = [];
-DataState successMovie = DataState(
+List<Movie> _movies = [];
+DataState _successMovie = DataState(
   responseState: ResponseState.success,
-  data: movies,
+  data: _movies,
 );
-List<Genre> genres = [];
-DataState successGenre = DataState(
+List<Genre> _genres = [];
+DataState _successGenre = DataState(
   responseState: ResponseState.success,
-  data: genres,
+  data: _genres,
 );
-DataState error = DataState(responseState: ResponseState.error);
-DataState empty = DataState(responseState: ResponseState.empty);
-DataState loading = DataState(responseState: ResponseState.loading);
+DataState _error = DataState(responseState: ResponseState.error);
+DataState _empty = DataState(responseState: ResponseState.empty);
+DataState _loading = DataState(responseState: ResponseState.loading);
 
 void main() {
   group(
@@ -27,8 +27,8 @@ void main() {
         'method checkAndConvertIntoResponse() from BlocUtils should return a instance of DataState with a responseState error by genreResponse',
         () async {
       final response = mapToMovieAndGenresResponse(
-        successMovie,
-        error,
+        _successMovie,
+        _error,
       );
       expect(
         response,
@@ -41,8 +41,8 @@ void main() {
         'method checkAndConvertIntoResponse() from BlocUtils should return a instance of DataState with a responseState error by movieResponse',
         () async {
       final response = mapToMovieAndGenresResponse(
-        empty,
-        error,
+        _empty,
+        _error,
       );
       expect(
         response,
@@ -55,8 +55,8 @@ void main() {
         'method checkAndConvertIntoResponse() from BlocUtils should return a instance of DataState with a responseState error by MovieResponse',
         () async {
       final response = mapToMovieAndGenresResponse(
-        error,
-        error,
+        _error,
+        _error,
       );
       expect(
         response,
@@ -69,8 +69,8 @@ void main() {
         'method checkAndConvertIntoResponse() from BlocUtils should return a instance of DataState with a responseState loading by movieResponse',
         () async {
       final response = mapToMovieAndGenresResponse(
-        loading,
-        error,
+        _loading,
+        _error,
       );
       expect(
         response,
@@ -83,8 +83,8 @@ void main() {
         'method checkAndConvertIntoResponse() from BlocUtils should return a instance of DataState with a responseState loading by genreResponse',
         () async {
       final response = mapToMovieAndGenresResponse(
-        successMovie,
-        loading,
+        _successMovie,
+        _loading,
       );
       expect(
         response,
@@ -97,8 +97,8 @@ void main() {
         'method checkAndConvertIntoResponse() from BlocUtils should return a instance of DataState with a responseState empty by genreResponse',
         () async {
       final response = mapToMovieAndGenresResponse(
-        successMovie,
-        empty,
+        _successMovie,
+        _empty,
       );
       expect(
         response,
@@ -111,8 +111,8 @@ void main() {
         'method checkAndConvertIntoResponse() from BlocUtils should return a instance of DataState with a responseState success by both responses',
         () async {
       final response = mapToMovieAndGenresResponse(
-        successMovie,
-        successGenre,
+        _successMovie,
+        _successGenre,
       );
       expect(
         response,

@@ -52,10 +52,9 @@ class StreamBuilderNowPlayingMovies extends StatelessWidget {
                 style: TextStyle(color: Colors.white),
               );
             case UiState.success:
-              return nowPlayingMoviesPageView(
+              return NowPlayingMoviesPageView(
                 movies: snapshot.data!.data.movies,
                 allGenres: snapshot.data!.data.genres,
-                bloc: movieListPageBloc,
               );
             default:
               return const Center(

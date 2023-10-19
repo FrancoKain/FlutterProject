@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import '../../../lib/src/domain/entities/genre.dart';
-import '../../../lib/src/domain/entities/movie.dart';
-import '../../../lib/src/presentation/bloc/movie_list_page_bloc.dart';
-import '../../../lib/src/presentation/pages/detail_movie_page.dart';
-import '../../../lib/src/presentation/widgets/movie_list_page_widgets/now_playing_movies_page_view.dart';
+import 'package:flutter_project/src/domain/entities/genre.dart';
+import 'package:flutter_project/src/domain/entities/movie.dart';
+import 'package:flutter_project/src/presentation/pages/detail_movie_page.dart';
+import 'package:flutter_project/src/presentation/widgets/movie_list_page_widgets/now_playing_movies_page_view.dart';
+
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  final MovieListPageBloc movieListPageBloc = MovieListPageBloc();
   final List<Movie> mockMovieList = [
     Movie(
       id: 1,
@@ -48,16 +47,15 @@ void main() {
         (WidgetTester tester) async {
       await tester.pumpWidget(
         MaterialApp(
-          home: nowPlayingMoviesPageView(
+          home: NowPlayingMoviesPageView(
             movies: mockMovieList,
             allGenres: genres,
-            bloc: movieListPageBloc,
           ),
         ),
       );
       await tester.tap(
         find.byKey(
-          const Key('PageViewNavigateToDetails'),
+          const Key('PageViewNavigateToDetails0'),
         ),
       );
       await tester.pumpAndSettle();
@@ -70,10 +68,9 @@ void main() {
         (WidgetTester tester) async {
       await tester.pumpWidget(
         MaterialApp(
-          home: nowPlayingMoviesPageView(
+          home: NowPlayingMoviesPageView(
             movies: mockMovieList,
             allGenres: genres,
-            bloc: movieListPageBloc,
           ),
         ),
       );

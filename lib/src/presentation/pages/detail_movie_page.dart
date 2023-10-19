@@ -60,9 +60,12 @@ class DetailMoviePage extends StatelessWidget {
               const ButtonSection(),
               GenresMovieDetails(movieGenres: genres),
             ]
-                .map((widget) => Padding(
+                .map(
+                  (widget) => Padding(
                     padding: const EdgeInsets.only(top: paddingBetween),
-                    child: widget))
+                    child: widget,
+                  ),
+                )
                 .toList(),
           ),
         ),

@@ -23,15 +23,15 @@ class MovieGridInformation extends StatefulWidget {
 
 class _MovieGridInformationState extends State<MovieGridInformation> {
   bool _selected = false;
-  double animationHeight = 290;
-  double animationWidth = 200;
-  late Offset offset = Offset(animationWidth / 2, animationHeight);
+  static const double animationHeight = 290;
+  static const double animationWidth = 200;
+  static const Offset offset = Offset(animationWidth / 2, animationHeight);
   static const Key gridViewNavigation = Key('GridViewNavigateToDetails');
   static const Key gridCachedImage = Key('gridImageKey');
   static const Key floatingButtonKey = Key('floatingButtonAnimation');
   static const double initialAnimationHeight = 0;
-  late double animationFinalHeight = animationHeight * 0.75;
-  late double animationRadius = animationHeight * 0.9;
+  static const double animationFinalHeight = animationHeight * 0.75;
+  static const double animationRadius = animationHeight * 0.9;
   static const double paddingValue = 10.0;
   static const double sizeBoxHeight = 100;
   static const double positionedSizeBoxHeight = 30;
@@ -104,18 +104,21 @@ class _MovieGridInformationState extends State<MovieGridInformation> {
                   width: positionedSizeBoxWidth,
                   height: positionedSizeBoxHeight,
                   child: FloatingActionButton(
-                      key: floatingButtonKey,
-                      heroTag: widget.movie.id,
-                      backgroundColor: Colors.black45,
-                      child: Icon(
-                        _selected ? Icons.arrow_downward : Icons.arrow_upward,
-                        color: Colors.white,
-                      ),
-                      onPressed: () {
-                        setState(() {
+                    key: floatingButtonKey,
+                    heroTag: widget.movie.id,
+                    backgroundColor: Colors.black45,
+                    child: Icon(
+                      _selected ? Icons.arrow_downward : Icons.arrow_upward,
+                      color: Colors.white,
+                    ),
+                    onPressed: () {
+                      setState(
+                        () {
                           _selected ? _selected = false : _selected = true;
-                        });
-                      }),
+                        },
+                      );
+                    },
+                  ),
                 ),
               ),
             ],
