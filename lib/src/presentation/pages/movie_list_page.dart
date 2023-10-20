@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import '../../domain/models/local_repository_response.dart';
-import '../../data/repositories/genre_repository.dart';
-import '../../data/repositories/movies_repository.dart';
-import '../../data/repositories/local_repository.dart';
+import '../bloc/movie_list_page_bloc.dart';
 import '../../core/utils/styles.dart';
-import '../widgets/movie_list_information.dart';
+import '../widgets/general_widgets/drawer_app.dart';
+import '../widgets/movie_list_page_widgets/stream_builder_now_playing_movies.dart';
+import '../widgets/movie_list_page_widgets/stream_builder_popular_movies.dart';
 
 class MovieListPage extends StatefulWidget {
   const MovieListPage({super.key});
@@ -16,69 +15,39 @@ class MovieListPage extends StatefulWidget {
 }
 
 class _MovieListPageState extends State<MovieListPage> {
-  LocalRepository local = LocalRepository(
-    movieRepo: MoviesRepository(),
-    genreRepo: GenreRepository(),
-  );
-  late Future<LocalRepositoryResponse> data;
+  MovieListPageBloc movieListPageBloc = MovieListPageBloc();
 
   @override
   void initState() {
-    data = local.getData();
+    movieListPageBloc.initialize();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          MyAppStyles.appTitle,
+          style: TextStyle(color: Colors.white54),
+        ),
+        backgroundColor: Colors.black45,
+      ),
+      drawer: const DrawerApp(),
       backgroundColor: MyAppStyles.backgroundColor,
-      body: FutureBuilder(
-        future: data,
-        builder: (
-          BuildContext context,
-            AsyncSnapshot snapshot,
-        ) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          } else if (snapshot.hasError) {
-            return Center(
-              child: Text(
-                snapshot.error.toString(),
-              ),
-            );
-          } else {
-            return ListView.builder(
-              scrollDirection: Axis.vertical,
-              itemCount: snapshot.data!.movies.length,
-              itemBuilder: (
-                context,
-                index,
-              ) {
-                return Padding(
-                  padding: const EdgeInsets.all(
-                    MyAppStyles.movieListPadding,
-                  ),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(
-                        MyAppStyles.movieListPageRadius,
-                      ),
-                      color: MovieListPage.cardColor,
-                    ),
-                    child: MovieListInformation(
-                      movie: snapshot.data!.movies[index],
-                      genres: local.getGenres(
-                        snapshot.data!.movies[index].genresIds,
-                      ),
-                    ),
-                  ),
-                );
-              },
-            );
-          }
-        },
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            StreamBuilderNowPlayingMovies(
+              nowPlayingMoviesData: movieListPageBloc.popularMoviesStream,
+              movieListPageBloc: movieListPageBloc,
+            ),
+            StreamBuilderPopularMovies(
+              popularMoviesData: movieListPageBloc.nowPlayingMoviesStream,
+              movieListPageBloc: movieListPageBloc,
+            )
+          ],
+        ),
       ),
     );
   }

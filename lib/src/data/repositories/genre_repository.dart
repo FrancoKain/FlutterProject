@@ -1,32 +1,36 @@
-import 'dart:convert';
+import '../../core/api_constants.dart';
+import '../../core/utils/state.dart';
+import '../../domain/entities/genre.dart';
+import '../datasource/remote/i_api_service.dart';
+import '../mappers/to_genre_mapper.dart';
+import '../models/genre_page_model.dart';
+import '../../domain/repositories/i_genre_repository.dart';
 
-import 'package:flutter/services.dart';
+class GenreRepository implements MyGenreRepository {
 
-import '../../domain/models/genres.dart';
-import '../../domain/repositories/i_repository.dart';
+  GenreRepository({required this.api});
 
-class GenreRepository implements MyRepository {
-  static const String genresJsonPath = 'assets/mock_data/genres.json';
-  List<Genre> allGenres = [];
+  final ApiService api;
 
   @override
-  Future<List<Genre>> getData() async {
-    String genreData = await rootBundle.loadString(
-      genresJsonPath,
-    );
-    var genresFromData = jsonDecode(genreData);
-    List<dynamic> genreList = genresFromData['genres'];
-    allGenres = genreList.map((genre) => Genre.fromJson(genre)).toList();
-    return allGenres;
-  }
-
-  List<Genre> getGenresById(List<int> ids) {
-    if (allGenres.isEmpty) {
-      getData();
+  Future<DataState> getData() async {
+    try {
+      final GenrePageModel response = await api.fetch("");
+      if (response.results.isEmpty) {
+        return DataState(responseState: ResponseState.empty);
+      } else {
+        List<Genre> genreList = [];
+        genreList = response.results.map((e) => ToGenre().call(e)).toList();
+        return DataState(
+          data: genreList,
+          responseState: ResponseState.success,
+        );
+      }
+    } catch (e) {
+      return DataState(
+        responseState: ResponseState.error,
+        error: ApiConstants.errorMessage,
+      );
     }
-    List<Genre> selectedGenres = [];
-    selectedGenres =
-        allGenres.where((genre) => ids.contains(genre.id)).toList();
-    return selectedGenres;
   }
 }

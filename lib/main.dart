@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'src/presentation/pages/movie_list_page.dart';
+import 'src/presentation/pages/home_page.dart';
 import 'src/core/utils/styles.dart';
 
 void main() {
@@ -12,10 +12,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: MyAppStyles.appTitle,
       debugShowCheckedModeBanner: false,
-      home: MovieListPage(),
+      home: HomePage(),
     );
   }
 }

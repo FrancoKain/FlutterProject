@@ -1,4 +1,5 @@
-abstract class MyRepository<T> {
+import '../../core/utils/bloc_utils.dart';
 
-  Future<T> getData();
+abstract class MyRepository<T> {
+  Future<T> getData(MovieCategory category);
 }

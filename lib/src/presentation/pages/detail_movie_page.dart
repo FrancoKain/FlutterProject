@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
-
-import '../../domain/models/genres.dart';
-import '../../presentation/widgets/search_engine.dart';
+import '../../domain/entities/genre.dart';
+import '../widgets/detail_movie_page/search_engine.dart';
 import '../../core/utils/styles.dart';
-import '../widgets/button_section.dart';
-import '../../domain/models/movie.dart';
-import '../../presentation/widgets/movie_details.dart';
-import '../../presentation/widgets/movie_header.dart';
-import '../widgets/movie_presentation.dart';
-import '../widgets/genres_details_page.dart';
+import '../widgets/detail_movie_page/button_section.dart';
+import '../../domain/entities/movie.dart';
+import '../widgets/detail_movie_page/movie_details.dart';
+import '../widgets/detail_movie_page/movie_header.dart';
+import '../widgets/detail_movie_page/movie_presentation.dart';
+import '../widgets/detail_movie_page/genres_details_page.dart';
 
 class DetailMoviePage extends StatelessWidget {
-   const DetailMoviePage({
+  const DetailMoviePage({
     super.key,
-    required this.movie, required this.genres,
+    required this.movie,
+    required this.genres,
   });
+
+  static const Key keyScaffold = Key('scaffoldDetailsPage');
 
   static const Color scaffoldBackground = MyAppStyles.backgroundColor;
   static const Color floatingButtonColor = Color(0xff6D586D);
@@ -23,10 +25,10 @@ class DetailMoviePage extends StatelessWidget {
   final List<Genre> genres;
   final Movie movie;
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: keyScaffold,
       floatingActionButton: FloatingActionButton(
         backgroundColor: floatingButtonColor,
         onPressed: () => Navigator.pop(
@@ -38,19 +40,6 @@ class DetailMoviePage extends StatelessWidget {
         ),
       ),
       backgroundColor: scaffoldBackground,
-      appBar: AppBar(
-        leading: const Icon(
-          Icons.person,
-          color: Colors.white,
-        ),
-        title: const Text(
-          MyAppStyles.appTitle,
-          style: TextStyle(
-            color: Colors.white54,
-          ),
-        ),
-        backgroundColor: Colors.black45,
-      ),
       body: SafeArea(
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
@@ -67,22 +56,16 @@ class DetailMoviePage extends StatelessWidget {
                 movieOriginalTitle: movie.originalTitle,
                 movieRate: movie.rate,
               ),
-              MovieDetails(
-                movieOverview: movie.overview,
-              ),
+              MovieDetails(movieOverview: movie.overview),
               const ButtonSection(),
-              GenresMovieDetails(
-                movieGenres: genres,
-              ),
-
-              //here i would put recommendations
+              GenresMovieDetails(movieGenres: genres),
             ]
-                .map((widget) => Padding(
-              padding: const EdgeInsets.only(
-                top: paddingBetween,
-              ),
-              child: widget,
-            ))
+                .map(
+                  (widget) => Padding(
+                    padding: const EdgeInsets.only(top: paddingBetween),
+                    child: widget,
+                  ),
+                )
                 .toList(),
           ),
         ),
