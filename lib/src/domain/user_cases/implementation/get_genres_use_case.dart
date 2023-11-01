@@ -5,9 +5,10 @@ import '../../../data/repositories/genre_repository_from_api.dart';
 import '../../../data/repositories/genre_repository_from_database.dart';
 
 class GetGenresUseCase {
-  GetGenresUseCase(
-      {required this.genreRepository,
-      required this.genreRepositoryFromDatabase});
+  GetGenresUseCase({
+    required this.genreRepository,
+    required this.genreRepositoryFromDatabase,
+  });
 
   final Connectivity _connectivity = Connectivity();
 

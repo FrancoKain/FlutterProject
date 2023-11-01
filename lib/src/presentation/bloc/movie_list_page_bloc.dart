@@ -10,7 +10,6 @@ import '../../core/utils/state.dart';
 import '../../core/utils/bloc_utils.dart';
 
 class MovieListPageBloc extends IBloc {
-
   StreamController<UiResourceState> _popularMovieStateStream =
       StreamController<UiResourceState>.broadcast();
 

@@ -9,8 +9,10 @@ import '../models/genre_page_model.dart';
 import '../../domain/repositories/i_genre_repository.dart';
 
 class GenreRepositoryFromApi implements MyGenreRepository {
-
-  GenreRepositoryFromApi({required this.api, required this.movieDatabase,});
+  GenreRepositoryFromApi({
+    required this.api,
+    required this.movieDatabase,
+  });
 
   final MovieDatabase movieDatabase;
   final ApiService api;
@@ -38,8 +40,8 @@ class GenreRepositoryFromApi implements MyGenreRepository {
     }
   }
 
-  Future<void> saveGenres(List<Genre> genres) async{
-    for(Genre genre in genres){
+  Future<void> saveGenres(List<Genre> genres) async {
+    for (Genre genre in genres) {
       await movieDatabase.saveGenre(genre: genre);
     }
   }

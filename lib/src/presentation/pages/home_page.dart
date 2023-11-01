@@ -15,11 +15,13 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   late TopRatedMoviesBloc topRatedMoviesBloc;
   late InitCore init;
+
   @override
   void initState() {
     super.initState();
   }
-  void didChangeDependencies(){
+
+  void didChangeDependencies() {
     init = Provider.of<InitCore>(context);
     topRatedMoviesBloc = Provider.of<InitCore>(context).topRatedMoviesBloc;
     topRatedMoviesBloc.initialize();
@@ -36,10 +38,7 @@ class _HomePageState extends State<HomePage> {
         ),
         backgroundColor: Colors.black45,
       ),
-      drawer: Provider(
-          create: (_) =>
-              init,
-          child: const DrawerApp()),
+      drawer: Provider(create: (_) => init, child: const DrawerApp()),
       backgroundColor: MyAppStyles.backgroundColor,
       body: StreamBuilderTopRatedMovies(
         topRatedMoviesData: topRatedMoviesBloc.topRatedMoviesStream,

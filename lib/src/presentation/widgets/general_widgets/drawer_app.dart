@@ -28,8 +28,7 @@ class DrawerApp extends StatelessWidget {
               context,
               MaterialPageRoute(
                 builder: (bcontext) => Provider<InitCore>(
-                    create: (_) =>
-                        Provider.of<InitCore>(context),
+                    create: (_) => Provider.of<InitCore>(context),
                     child: HomePage()),
               ),
             ),
@@ -43,10 +42,9 @@ class DrawerApp extends StatelessWidget {
               context,
               MaterialPageRoute(
                 builder: (bcontext) => Provider<InitCore>(
-                    create: (_) =>
-                        Provider.of<InitCore>(context, listen: false),
-                    child: const MovieListPage(),
-                    ),
+                  create: (_) => Provider.of<InitCore>(context, listen: false),
+                  child: const MovieListPage(),
+                ),
               ),
             ),
           ),

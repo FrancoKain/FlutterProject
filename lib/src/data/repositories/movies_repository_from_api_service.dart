@@ -10,8 +10,10 @@ import '../datasource/remote/i_api_service.dart';
 import '../models/movie_page_model.dart';
 
 class MoviesRepositoryFromApiService implements MyRepositoryFromApi {
-  MoviesRepositoryFromApiService(
-      {required this.api, required this.movieDatabase});
+  MoviesRepositoryFromApiService({
+    required this.api,
+    required this.movieDatabase,
+  });
 
   final ApiService api;
   final MovieDatabase movieDatabase;
@@ -25,7 +27,10 @@ class MoviesRepositoryFromApiService implements MyRepositoryFromApi {
       } else {
         List<Movie> movieList = [];
         movieList = response.results.map((e) => ToMovie().call(e)).toList();
-        saveMovies(movieList, category);
+        saveMovies(
+          movieList,
+          category,
+        );
         return DataState(
           data: movieList,
           responseState: ResponseState.success,
@@ -41,7 +46,7 @@ class MoviesRepositoryFromApiService implements MyRepositoryFromApi {
 
   void saveMovies(List<Movie> movies, MovieCategory category) {
     for (Movie movie in movies) {
-      if(!movie.categories.contains(category.name)){
+      if (!movie.categories.contains(category.name)) {
         movie.categories.add(category.name);
       }
       movieDatabase.saveMovie(movie: movie);

@@ -24,12 +24,11 @@ class _MovieListPageState extends State<MovieListPage> {
     super.initState();
   }
 
-  void didChangeDependencies(){
+  void didChangeDependencies() {
     movieListPageBloc = Provider.of<InitCore>(context).movieListPageBloc;
     movieListPageBloc.initialize();
     super.didChangeDependencies();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -47,9 +46,9 @@ class _MovieListPageState extends State<MovieListPage> {
         child: Column(
           children: [
             StreamBuilderNowPlayingMovies(
-              nowPlayingMoviesData: movieListPageBloc.popularMoviesStream),
+                nowPlayingMoviesData: movieListPageBloc.popularMoviesStream),
             StreamBuilderPopularMovies(
-              popularMoviesData: movieListPageBloc.nowPlayingMoviesStream)
+                popularMoviesData: movieListPageBloc.nowPlayingMoviesStream)
           ],
         ),
       ),

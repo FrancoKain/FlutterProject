@@ -12,8 +12,9 @@ class TopRatedMoviesBloc extends IBloc {
     required this.getTopRatedMovies,
     required this.getGenresUseCase,
   });
+
   StreamController<UiResourceState> _movieStream =
-  StreamController<UiResourceState>.broadcast();
+      StreamController<UiResourceState>.broadcast();
   final GetMoviesByEndPointUseCase getTopRatedMovies;
   final GetGenresUseCase getGenresUseCase;
 

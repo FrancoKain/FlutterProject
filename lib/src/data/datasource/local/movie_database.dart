@@ -1,4 +1,3 @@
-
 import 'package:flutter_project/src/domain/entities/genre.dart';
 import 'package:flutter_project/src/domain/repositories/i_movie_database_repository.dart';
 import '../../../domain/entities/movie.dart';
@@ -10,9 +9,8 @@ class MovieDatabase implements IMovieDatabaseRepository {
   final FloorMovieDatabase _movieDatabase;
 
   @override
-  Future<List<Movie>> getMovies(String category) async{
+  Future<List<Movie>> getMovies(String category) async {
     return _movieDatabase.movieDao.findMoviesByCategory(category);
-
   }
 
   @override

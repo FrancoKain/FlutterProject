@@ -7,6 +7,7 @@ import 'src/core/utils/styles.dart';
 void main() {
   runApp(const MyApp());
 }
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -14,24 +15,23 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     InitCore _initCore = InitCore();
     return FutureBuilder(
-      future: _initCore.initialize(),
-      builder: (BuildContext context,
+        future: _initCore.initialize(),
+        builder: (
+          BuildContext context,
           AsyncSnapshot<bool> snapshot,
-      ){
-        if(snapshot.hasData){
-          return MaterialApp(
-            title: MyAppStyles.appTitle,
-            debugShowCheckedModeBanner: false,
-            home: Provider<InitCore>(
+        ) {
+          if (snapshot.hasData) {
+            return MaterialApp(
+              title: MyAppStyles.appTitle,
+              debugShowCheckedModeBanner: false,
+              home: Provider<InitCore>(
                 create: (_) => _initCore,
                 child: HomePage(),
-            ),
-          );
-        }
-        else{
-          return const CircularProgressIndicator();
-        }
-      }
-    );
+              ),
+            );
+          } else {
+            return const CircularProgressIndicator();
+          }
+        });
   }
 }

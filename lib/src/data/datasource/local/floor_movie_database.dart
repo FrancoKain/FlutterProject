@@ -11,7 +11,10 @@ import 'local_DAOs/movie_dao.dart';
 
 part 'floor_movie_database.g.dart';
 
-@TypeConverters(<Type>[GenresConverter, CategoryListConverter])
+@TypeConverters(<Type>[
+  GenresConverter,
+  CategoryListConverter,
+])
 @Database(
   version: 1,
   entities: <Type>[
@@ -19,8 +22,8 @@ part 'floor_movie_database.g.dart';
     Genre,
   ],
 )
-
 abstract class FloorMovieDatabase extends FloorDatabase {
   MovieDao get movieDao;
+
   MovieGenreDao get genreDao;
 }
