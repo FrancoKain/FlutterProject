@@ -1,4 +1,4 @@
-import 'package:flutter_project/src/data/datasource/local/movie_database.dart';
+import '../../data/datasource/local/movie_database.dart';
 import '../../core/utils/state.dart';
 import '../../domain/entities/genre.dart';
 import '../../domain/repositories/i_genre_repository.dart';

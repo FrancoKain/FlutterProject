@@ -12,20 +12,21 @@ class Movie {
   final String backDrop;
   final double rate;
   final List<int> genresIds;
-  List<String> categories;
+  final List<String> categories;
 
   String get fullBackdropPath => '$imagesLink$backDrop';
 
   String get fullPosterPath => '$imagesLink$poster';
 
-  Movie(
-      {required this.id,
-      required this.originalTitle,
-      required this.overview,
-      required this.title,
-      required this.rate,
-      required this.backDrop,
-      required this.poster,
-      required this.genresIds,
-      required this.categories});
+  Movie({
+    required this.id,
+    required this.originalTitle,
+    required this.overview,
+    required this.title,
+    required this.rate,
+    required this.backDrop,
+    required this.poster,
+    required this.genresIds,
+    required this.categories,
+  });
 }

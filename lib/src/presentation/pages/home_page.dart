@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project/src/core/parameter/init_values.dart';
+import '../../core/parameter/init_values.dart';
 import 'package:provider/provider.dart';
 import '../bloc/top_rated_movies_bloc.dart';
 import '../widgets/general_widgets/drawer_app.dart';
@@ -38,7 +38,10 @@ class _HomePageState extends State<HomePage> {
         ),
         backgroundColor: Colors.black45,
       ),
-      drawer: Provider(create: (_) => init, child: const DrawerApp()),
+      drawer: Provider(
+        create: (_) => init,
+        child: const DrawerApp(),
+      ),
       backgroundColor: MyAppStyles.backgroundColor,
       body: StreamBuilderTopRatedMovies(
         topRatedMoviesData: topRatedMoviesBloc.topRatedMoviesStream,

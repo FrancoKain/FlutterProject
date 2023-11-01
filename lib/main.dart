@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project/src/core/parameter/init_values.dart';
+import 'src/core/parameter/init_values.dart';
 import 'package:provider/provider.dart';
 import 'src/presentation/pages/home_page.dart';
 import 'src/core/utils/styles.dart';

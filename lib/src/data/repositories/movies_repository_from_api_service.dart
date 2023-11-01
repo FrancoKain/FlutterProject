@@ -1,4 +1,4 @@
-import 'package:flutter_project/src/data/datasource/local/movie_database.dart';
+import '../../data/datasource/local/movie_database.dart';
 
 import '../../core/api_constants.dart';
 import '../../core/utils/movie_category_enum.dart';

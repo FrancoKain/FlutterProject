@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project/src/core/parameter/init_values.dart';
 import 'package:provider/provider.dart';
+import '../../core/parameter/init_values.dart';
 import '../bloc/movie_list_page_bloc.dart';
 import '../../core/utils/styles.dart';
 import '../widgets/general_widgets/drawer_app.dart';

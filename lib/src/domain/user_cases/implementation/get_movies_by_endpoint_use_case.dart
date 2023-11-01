@@ -1,6 +1,6 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:flutter_project/src/domain/repositories/i_my_repository_from_database.dart';
-import 'package:flutter_project/src/domain/repositories/i_repository_from_api.dart';
+import '../../../domain/repositories/i_my_repository_from_database.dart';
+import '../../../domain/repositories/i_repository_from_api.dart';
 
 import '../../../core/utils/movie_category_enum.dart';
 import '../../../core/utils/state.dart';
