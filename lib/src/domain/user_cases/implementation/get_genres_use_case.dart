@@ -1,17 +1,24 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
+
 import '../../../core/utils/state.dart';
-import '../../../data/datasource/remote/genre_api_provider.dart';
-import '../../../data/datasource/remote/i_api_service.dart';
-import '../../../data/repositories/genre_repository.dart';
+import '../../../data/repositories/genre_repository_from_api.dart';
+import '../../../data/repositories/genre_repository_from_database.dart';
 
 class GetGenresUseCase {
-  final ApiService api = GenreApiProvider();
-  final GenreRepository genreRepo;
+  GetGenresUseCase(
+      {required this.genreRepository,
+      required this.genreRepositoryFromDatabase});
 
-  GetGenresUseCase({GenreRepository? moviesRepository})
-      : genreRepo =
-            moviesRepository ?? GenreRepository(api: GenreApiProvider());
+  final Connectivity _connectivity = Connectivity();
+
+  final GenreRepositoryFromApi genreRepository;
+  final GenreRepositoryFromDatabase genreRepositoryFromDatabase;
 
   Future<DataState> getGenres() async {
-    return await genreRepo.getData();
+    if (await _connectivity.checkConnectivity() == ConnectivityResult.none) {
+      return await genreRepositoryFromDatabase.getData();
+    } else {
+      return await genreRepository.getData();
+    }
   }
 }

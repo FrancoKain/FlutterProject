@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project/src/core/parameter/init_values.dart';
+import 'package:provider/provider.dart';
 import '../bloc/movie_list_page_bloc.dart';
 import '../../core/utils/styles.dart';
 import '../widgets/general_widgets/drawer_app.dart';
@@ -15,13 +17,19 @@ class MovieListPage extends StatefulWidget {
 }
 
 class _MovieListPageState extends State<MovieListPage> {
-  MovieListPageBloc movieListPageBloc = MovieListPageBloc();
+  late MovieListPageBloc movieListPageBloc;
 
   @override
   void initState() {
-    movieListPageBloc.initialize();
     super.initState();
   }
+
+  void didChangeDependencies(){
+    movieListPageBloc = Provider.of<InitCore>(context).movieListPageBloc;
+    movieListPageBloc.initialize();
+    super.didChangeDependencies();
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -39,13 +47,9 @@ class _MovieListPageState extends State<MovieListPage> {
         child: Column(
           children: [
             StreamBuilderNowPlayingMovies(
-              nowPlayingMoviesData: movieListPageBloc.popularMoviesStream,
-              movieListPageBloc: movieListPageBloc,
-            ),
+              nowPlayingMoviesData: movieListPageBloc.popularMoviesStream),
             StreamBuilderPopularMovies(
-              popularMoviesData: movieListPageBloc.nowPlayingMoviesStream,
-              movieListPageBloc: movieListPageBloc,
-            )
+              popularMoviesData: movieListPageBloc.nowPlayingMoviesStream)
           ],
         ),
       ),

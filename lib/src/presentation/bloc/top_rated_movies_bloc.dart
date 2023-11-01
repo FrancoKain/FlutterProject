@@ -8,20 +8,14 @@ import '../../domain/user_cases/implementation/get_genres_use_case.dart';
 import '../../domain/user_cases/implementation/get_movies_by_endpoint_use_case.dart';
 
 class TopRatedMoviesBloc extends IBloc {
-  late final GetMoviesByEndPointUseCase getTopRatedMovies;
-  late final GetGenresUseCase getGenresUseCase;
-  StreamController<UiResourceState> _movieStream =
-      StreamController<UiResourceState>.broadcast();
-
-  TopRatedMoviesBloc() {
-    getTopRatedMovies = GetMoviesByEndPointUseCase(category: MovieCategory.topRated);
-    getGenresUseCase = GetGenresUseCase();
-  }
-
-  TopRatedMoviesBloc.fromMock({
+  TopRatedMoviesBloc({
     required this.getTopRatedMovies,
     required this.getGenresUseCase,
   });
+  StreamController<UiResourceState> _movieStream =
+  StreamController<UiResourceState>.broadcast();
+  final GetMoviesByEndPointUseCase getTopRatedMovies;
+  final GetGenresUseCase getGenresUseCase;
 
   @override
   void dispose() {

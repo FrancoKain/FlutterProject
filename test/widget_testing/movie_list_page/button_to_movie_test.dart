@@ -14,7 +14,7 @@ void main() {
     rate: 10,
     backDrop: '',
     poster: '',
-    genresIds: [],
+    genresIds: [], categories: [],
   );
   final List<Genre> genres = [
     const Genre(

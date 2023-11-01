@@ -2,10 +2,6 @@ import 'state.dart';
 import 'ui_resource_state.dart';
 import '../../domain/entities/movies_and_genres_response.dart';
 
-enum MovieCategory{
-  popular, nowPlaying, topRated,
-}
-
 UiResourceState mapToMovieAndGenresResponse(
   DataState movieResponse,
   DataState genreResponse,

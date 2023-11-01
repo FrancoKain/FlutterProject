@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import '../../../lib/src/core/utils/ui_resource_state.dart';
-import '../../../lib/src/domain/entities/movies_and_genres_response.dart';
-import '../../../lib/src/presentation/bloc/top_rated_movies_bloc.dart';
-import '../../../lib/src/presentation/widgets/home_page_widgets/stream_builder_top_rated_movies.dart';
-import '../../../lib/src/presentation/widgets/home_page_widgets/top_rated_grid_view.dart';
+import 'package:flutter_project/src/core/parameter/init_values.dart';
+import 'package:flutter_project/src/core/utils/ui_resource_state.dart';
+import 'package:flutter_project/src/domain/entities/movies_and_genres_response.dart';
+import 'package:flutter_project/src/presentation/widgets/home_page_widgets/stream_builder_top_rated_movies.dart';
+import 'package:flutter_project/src/presentation/widgets/home_page_widgets/top_rated_grid_view.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:provider/provider.dart';
 
 Future<void> main() async {
-  final TopRatedMoviesBloc topRatedMoviesBloc = TopRatedMoviesBloc();
-
+  InitCore init = InitCore();
   Future<UiResourceState> getData(int numberState) async {
     UiState response;
     switch (numberState) {
@@ -62,9 +62,19 @@ Future<void> main() async {
         (WidgetTester tester) async {
       await tester.pumpWidget(
         MaterialApp(
-          home: StreamBuilderTopRatedMovies(
-            topRatedMoviesBloc: topRatedMoviesBloc,
-            topRatedMoviesData: topRatedMoviesDataLoading,
+          home: FutureBuilder(
+            future: init.initialize(),
+            builder: (
+              BuildContext context,
+              AsyncSnapshot<bool> snapshot,
+            ) {
+              return Provider<InitCore>(
+                create: (context) => init,
+                child: StreamBuilderTopRatedMovies(
+                  topRatedMoviesData: topRatedMoviesDataLoading,
+                ),
+              );
+            },
           ),
         ),
       );
@@ -79,14 +89,20 @@ Future<void> main() async {
     testWidgets(
         'Verify that StreamBuilderTopRatedMovies widget takes correctly the error state',
         (WidgetTester tester) async {
-      await tester.pumpWidget(
-        MaterialApp(
-          home: StreamBuilderTopRatedMovies(
-            topRatedMoviesBloc: topRatedMoviesBloc,
-            topRatedMoviesData: topRatedMoviesDataError,
-          ),
-        ),
-      );
+      await tester.pumpWidget(MaterialApp(
+          home: FutureBuilder(
+              future: init.initialize(),
+              builder: (
+                BuildContext context,
+                AsyncSnapshot<bool> snapshot,
+              ) {
+                return Provider<InitCore>(
+                  create: (context) => init,
+                  child: StreamBuilderTopRatedMovies(
+                    topRatedMoviesData: topRatedMoviesDataError,
+                  ),
+                );
+              })));
       await tester.pumpAndSettle();
       expect(
         find.byKey(
@@ -98,14 +114,20 @@ Future<void> main() async {
     testWidgets(
         'Verify that StreamBuilderTopRatedMovies widget takes correctly the success state',
         (WidgetTester tester) async {
-      await tester.pumpWidget(
-        MaterialApp(
-          home: StreamBuilderTopRatedMovies(
-            topRatedMoviesBloc: topRatedMoviesBloc,
-            topRatedMoviesData: topRatedMoviesDataSuccess,
-          ),
-        ),
-      );
+      await tester.pumpWidget(MaterialApp(
+          home: FutureBuilder(
+              future: init.initialize(),
+              builder: (
+                BuildContext context,
+                AsyncSnapshot<bool> snapshot,
+              ) {
+                return Provider<InitCore>(
+                  create: (context) => init,
+                  child: StreamBuilderTopRatedMovies(
+                    topRatedMoviesData: topRatedMoviesDataSuccess,
+                  ),
+                );
+              })));
       await tester.pumpAndSettle();
       expect(
         find.byType(TopRatedGridView),
@@ -115,14 +137,20 @@ Future<void> main() async {
     testWidgets(
         'Verify that StreamBuilderTopRatedMovies widget takes correctly the empty state',
         (WidgetTester tester) async {
-      await tester.pumpWidget(
-        MaterialApp(
-          home: StreamBuilderTopRatedMovies(
-            topRatedMoviesBloc: topRatedMoviesBloc,
-            topRatedMoviesData: topRatedMoviesDataEmpty,
-          ),
-        ),
-      );
+      await tester.pumpWidget(MaterialApp(
+          home: FutureBuilder(
+              future: init.initialize(),
+              builder: (
+                BuildContext context,
+                AsyncSnapshot<bool> snapshot,
+              ) {
+                return Provider<InitCore>(
+                  create: (context) => init,
+                  child: StreamBuilderTopRatedMovies(
+                    topRatedMoviesData: topRatedMoviesDataEmpty,
+                  ),
+                );
+              })));
       await tester.pumpAndSettle();
       expect(
         find.byKey(

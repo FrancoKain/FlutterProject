@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project/src/core/parameter/init_values.dart';
+import 'package:provider/provider.dart';
 import '../bloc/top_rated_movies_bloc.dart';
 import '../widgets/general_widgets/drawer_app.dart';
 
@@ -11,11 +13,17 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  TopRatedMoviesBloc topRatedMoviesBloc = TopRatedMoviesBloc();
+  late TopRatedMoviesBloc topRatedMoviesBloc;
+  late InitCore init;
   @override
   void initState() {
-    topRatedMoviesBloc.initialize();
     super.initState();
+  }
+  void didChangeDependencies(){
+    init = Provider.of<InitCore>(context);
+    topRatedMoviesBloc = Provider.of<InitCore>(context).topRatedMoviesBloc;
+    topRatedMoviesBloc.initialize();
+    super.didChangeDependencies();
   }
 
   @override
@@ -28,10 +36,12 @@ class _HomePageState extends State<HomePage> {
         ),
         backgroundColor: Colors.black45,
       ),
-      drawer: const DrawerApp(),
+      drawer: Provider(
+          create: (_) =>
+              init,
+          child: const DrawerApp()),
       backgroundColor: MyAppStyles.backgroundColor,
       body: StreamBuilderTopRatedMovies(
-        topRatedMoviesBloc: topRatedMoviesBloc,
         topRatedMoviesData: topRatedMoviesBloc.topRatedMoviesStream,
       ),
     );

@@ -1,20 +1,27 @@
-import 'package:flutter_project/src/core/utils/bloc_utils.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:flutter_project/src/domain/repositories/i_my_repository_from_database.dart';
+import 'package:flutter_project/src/domain/repositories/i_repository_from_api.dart';
 
+import '../../../core/utils/movie_category_enum.dart';
 import '../../../core/utils/state.dart';
-import '../../../data/datasource/remote/movies_api_provider.dart';
-import '../../../data/repositories/movies_repository.dart';
 
 class GetMoviesByEndPointUseCase {
   GetMoviesByEndPointUseCase({
     required this.category,
-    MoviesRepository? moviesRepository,
-  }) : _moviesRepository =
-            moviesRepository ?? MoviesRepository(api: ApiMovieService());
+    required this.moviesRepositoryFromApiService,
+    required this.moviesRepositoryFromDataBase,
+  });
 
-  final MoviesRepository _moviesRepository;
+  final Connectivity _connectivity = Connectivity();
+  final MyRepositoryFromApi moviesRepositoryFromApiService;
+  final MyRepositoryFromDatabase moviesRepositoryFromDataBase;
   final MovieCategory category;
 
   Future<DataState> getData() async {
-    return await _moviesRepository.getData(category);
+    if (await _connectivity.checkConnectivity() == ConnectivityResult.none) {
+      return await moviesRepositoryFromDataBase.getData(category);
+    } else {
+      return await moviesRepositoryFromApiService.getData(category);
+    }
   }
 }

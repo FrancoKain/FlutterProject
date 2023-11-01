@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../../../core/parameter/init_values.dart';
 import '../../pages/home_page.dart';
 import '../../pages/movie_list_page.dart';
 
@@ -25,7 +27,10 @@ class DrawerApp extends StatelessWidget {
             onTap: () => Navigator.pushReplacement(
               context,
               MaterialPageRoute(
-                builder: (context) => HomePage(),
+                builder: (bcontext) => Provider<InitCore>(
+                    create: (_) =>
+                        Provider.of<InitCore>(context),
+                    child: HomePage()),
               ),
             ),
           ),
@@ -37,7 +42,11 @@ class DrawerApp extends StatelessWidget {
             onTap: () => Navigator.pushReplacement(
               context,
               MaterialPageRoute(
-                builder: (context) => const MovieListPage(),
+                builder: (bcontext) => Provider<InitCore>(
+                    create: (_) =>
+                        Provider.of<InitCore>(context, listen: false),
+                    child: const MovieListPage(),
+                    ),
               ),
             ),
           ),

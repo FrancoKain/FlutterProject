@@ -1,4 +1,7 @@
+import 'package:floor/floor.dart';
+@entity
 class Genre {
+  @primaryKey
   final int id;
   final String name;
 

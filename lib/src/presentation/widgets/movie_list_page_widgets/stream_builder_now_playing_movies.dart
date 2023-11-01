@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
 import '../../../core/utils/styles.dart';
 import '../../../core/utils/ui_resource_state.dart';
-import '../../bloc/movie_list_page_bloc.dart';
 import 'now_playing_movies_page_view.dart';
 
 class StreamBuilderNowPlayingMovies extends StatelessWidget {
   const StreamBuilderNowPlayingMovies({
     super.key,
-    required this.movieListPageBloc,
     required this.nowPlayingMoviesData,
   });
 
   final Stream<UiResourceState> nowPlayingMoviesData;
-  final MovieListPageBloc movieListPageBloc;
 
   static const Key loadingNowPlayingState = Key('loadingResponseNowPlaying');
   static const Key errorNowPlayingState = Key('errorResponseNowPlaying');

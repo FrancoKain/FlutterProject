@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import '../../core/utils/movie_category_enum.dart';
 import '../../domain/user_cases/implementation/get_genres_use_case.dart';
 import '../../domain/user_cases/implementation/get_movies_by_endpoint_use_case.dart';
 
@@ -9,34 +10,29 @@ import '../../core/utils/state.dart';
 import '../../core/utils/bloc_utils.dart';
 
 class MovieListPageBloc extends IBloc {
-  late GetMoviesByEndPointUseCase getPopularMovies;
-  late GetGenresUseCase getGenresUseCase;
-  late GetMoviesByEndPointUseCase getNowPlayingMovies;
+
   StreamController<UiResourceState> _popularMovieStateStream =
       StreamController<UiResourceState>.broadcast();
+
   StreamController<UiResourceState> _nowPlayingMovieStateStream =
       StreamController<UiResourceState>.broadcast();
 
-  final MovieCategory category = MovieCategory.nowPlaying ;
   Stream<UiResourceState> get nowPlayingMoviesStream =>
       _nowPlayingMovieStateStream.stream;
 
   Stream<UiResourceState> get popularMoviesStream =>
       _popularMovieStateStream.stream;
 
-  MovieListPageBloc() {
-    this.getGenresUseCase = GetGenresUseCase();
-    this.getNowPlayingMovies =
-        GetMoviesByEndPointUseCase(category: MovieCategory.nowPlaying);
-    this.getPopularMovies =
-        GetMoviesByEndPointUseCase(category: MovieCategory.popular);
-  }
-
-  MovieListPageBloc.fromMock({
+  MovieListPageBloc({
     required this.getGenresUseCase,
     required this.getNowPlayingMovies,
     required this.getPopularMovies,
   });
+
+  final GetMoviesByEndPointUseCase getPopularMovies;
+  final GetGenresUseCase getGenresUseCase;
+  final GetMoviesByEndPointUseCase getNowPlayingMovies;
+  final MovieCategory category = MovieCategory.nowPlaying;
 
   @override
   void dispose() {

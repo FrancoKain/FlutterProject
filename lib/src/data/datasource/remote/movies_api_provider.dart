@@ -8,10 +8,12 @@ import 'dart:convert';
 
 import 'i_api_service.dart';
 
+const String movieConst = "movie";
+
 class ApiMovieService implements ApiService {
   Future<MoviePageModel> fetch(String url) async {
     final response = await http.get(
-      Uri.parse('${ApiConstants.apiUrl}$url${ApiConstants.apiKey}'),
+      Uri.parse('${ApiConstants.apiUrl}$movieConst$url${ApiConstants.apiKey}'),
     );
     if (response.statusCode == HttpStatus.ok) {
       return MoviePageModel.fromJson(
