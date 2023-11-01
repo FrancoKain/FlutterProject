@@ -1,13 +1,12 @@
+
 import 'package:flutter/material.dart';
-import '../../../lib/src/core/utils/ui_resource_state.dart';
-import '../../../lib/src/domain/entities/movies_and_genres_response.dart';
-import '../../../lib/src/presentation/bloc/movie_list_page_bloc.dart';
-import '../../../lib/src/presentation/widgets/movie_list_page_widgets/popular_movies_list_view.dart';
-import '../../../lib/src/presentation/widgets/movie_list_page_widgets/stream_builder_popular_movies.dart';
+import 'package:flutter_project/src/core/utils/ui_resource_state.dart';
+import 'package:flutter_project/src/domain/entities/movies_and_genres_response.dart';
+import 'package:flutter_project/src/presentation/widgets/movie_list_page_widgets/popular_movies_list_view.dart';
+import 'package:flutter_project/src/presentation/widgets/movie_list_page_widgets/stream_builder_popular_movies.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 Future<void> main() async {
-  final MovieListPageBloc movieListPageBloc = MovieListPageBloc();
 
   Future<UiResourceState> getData(int numberState) async {
     UiState response;
@@ -63,7 +62,6 @@ Future<void> main() async {
       await tester.pumpWidget(
         MaterialApp(
           home: StreamBuilderPopularMovies(
-            movieListPageBloc: movieListPageBloc,
             popularMoviesData: popularMoviesDataLoading,
           ),
         ),
@@ -80,7 +78,6 @@ Future<void> main() async {
       await tester.pumpWidget(
         MaterialApp(
           home: StreamBuilderPopularMovies(
-            movieListPageBloc: movieListPageBloc,
             popularMoviesData: popularMoviesDataError,
           ),
         ),
@@ -97,7 +94,6 @@ Future<void> main() async {
       await tester.pumpWidget(
         MaterialApp(
           home: StreamBuilderPopularMovies(
-            movieListPageBloc: movieListPageBloc,
             popularMoviesData: popularMoviesDataSuccess,
           ),
         ),
@@ -114,7 +110,6 @@ Future<void> main() async {
       await tester.pumpWidget(
         MaterialApp(
           home: StreamBuilderPopularMovies(
-            movieListPageBloc: movieListPageBloc,
             popularMoviesData: popularMoviesDataEmpty,
           ),
         ),

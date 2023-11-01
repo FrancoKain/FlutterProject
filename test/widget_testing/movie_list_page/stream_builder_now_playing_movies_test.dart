@@ -1,13 +1,13 @@
+
+
 import 'package:flutter/material.dart';
-import '../../../lib/src/core/utils/ui_resource_state.dart';
-import '../../../lib/src/domain/entities/movies_and_genres_response.dart';
-import '../../../lib/src/presentation/bloc/movie_list_page_bloc.dart';
-import '../../../lib/src/presentation/widgets/movie_list_page_widgets/now_playing_movies_page_view.dart';
-import '../../../lib/src/presentation/widgets/movie_list_page_widgets/stream_builder_now_playing_movies.dart';
+import 'package:flutter_project/src/core/utils/ui_resource_state.dart';
+import 'package:flutter_project/src/domain/entities/movies_and_genres_response.dart';
+import 'package:flutter_project/src/presentation/widgets/movie_list_page_widgets/now_playing_movies_page_view.dart';
+import 'package:flutter_project/src/presentation/widgets/movie_list_page_widgets/stream_builder_now_playing_movies.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 Future<void> main() async {
-  final MovieListPageBloc MoviesBloc = MovieListPageBloc();
 
   Future<UiResourceState> getData(int numberState) async {
     UiState response;
@@ -63,7 +63,6 @@ Future<void> main() async {
       await tester.pumpWidget(
         MaterialApp(
           home: StreamBuilderNowPlayingMovies(
-            movieListPageBloc: MoviesBloc,
             nowPlayingMoviesData: nowPlayingMoviesDataLoading,
           ),
         ),
@@ -80,7 +79,6 @@ Future<void> main() async {
       await tester.pumpWidget(
         MaterialApp(
           home: StreamBuilderNowPlayingMovies(
-            movieListPageBloc: MoviesBloc,
             nowPlayingMoviesData: nowPlayingMoviesDataError,
           ),
         ),
@@ -97,7 +95,6 @@ Future<void> main() async {
       await tester.pumpWidget(
         MaterialApp(
           home: StreamBuilderNowPlayingMovies(
-            movieListPageBloc: MoviesBloc,
             nowPlayingMoviesData: nowPlayingMoviesDataSuccess,
           ),
         ),
@@ -114,7 +111,6 @@ Future<void> main() async {
       await tester.pumpWidget(
         MaterialApp(
           home: StreamBuilderNowPlayingMovies(
-            movieListPageBloc: MoviesBloc,
             nowPlayingMoviesData: nowPlayingMoviesDataEmpty,
           ),
         ),

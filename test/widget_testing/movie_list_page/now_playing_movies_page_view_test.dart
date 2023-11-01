@@ -16,7 +16,7 @@ void main() {
       rate: 10,
       backDrop: '',
       poster: '',
-      genresIds: [],
+      genresIds: [], categories: [],
     ),
     Movie(
       id: 21,
@@ -26,7 +26,7 @@ void main() {
       rate: 10,
       backDrop: '',
       poster: '',
-      genresIds: [],
+      genresIds: [], categories: [],
     )
   ];
   final List<Genre> genres = [

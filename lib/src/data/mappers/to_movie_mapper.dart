@@ -15,6 +15,7 @@ class ToMovie implements Mapper<MovieModel, Movie> {
       poster: movieModel.posterPath,
       genresIds: movieModel.genres,
       id: movieModel.id,
+      categories: [],
     );
   }
 }

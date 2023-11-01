@@ -1,13 +1,16 @@
+
 import 'dart:io';
-
-import 'package:flutter_project/src/core/utils/bloc_utils.dart';
-
-import '../../lib/src/core/utils/state.dart';
-import '../../lib/src/data/datasource/remote/i_api_service.dart';
-import '../../lib/src/data/models/genre_page_model.dart';
-import '../../lib/src/data/models/movie_page_model.dart';
-import '../../lib/src/data/repositories/genre_repository.dart';
-import '../../lib/src/data/repositories/movies_repository.dart';
+import 'package:flutter_project/src/core/utils/movie_category_enum.dart';
+import 'package:flutter_project/src/core/utils/state.dart';
+import 'package:flutter_project/src/data/datasource/local/movie_database.dart';
+import 'package:flutter_project/src/data/datasource/remote/i_api_service.dart';
+import 'package:flutter_project/src/data/models/genre_page_model.dart';
+import 'package:flutter_project/src/data/models/movie_page_model.dart';
+import 'package:flutter_project/src/data/repositories/genre_repository_from_api.dart';
+import 'package:flutter_project/src/data/repositories/movies_repository_from_api_service.dart';
+import 'package:flutter_project/src/domain/entities/genre.dart';
+import 'package:flutter_project/src/domain/entities/movie.dart';
+import 'package:flutter_project/src/domain/repositories/i_repository_from_api.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 class MovieApiProviderSuccess implements ApiService {
@@ -116,13 +119,50 @@ class GenreApiProvideFailure implements ApiService {
   }
 }
 
+class MockMovieDatabase implements MovieDatabase{
+  @override
+  Future<bool> existMovieSaved(int id) {
+    // TODO: implement existMovieSaved
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<List<Genre>> getGenres() {
+    // TODO: implement getGenres
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<List<Movie>> getMovies(String category) {
+    // TODO: implement getMovies
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> removeMovie({required Movie movie}) async {
+    print("");
+
+  }
+
+  @override
+  Future<void> saveGenre({required Genre genre}) async {
+    print("");
+  }
+
+  @override
+  Future<void> saveMovie({required Movie movie}) async {
+    print("");
+  }
+
+}
+
 void main() {
   group('testing of all possibilities in repository', () {
     test(
         'getData() from MovieRepository should return a instance of DataState with a responseState success',
         () async {
-      MoviesRepository repo = MoviesRepository(
-        api: MovieApiProviderSuccess(),
+      MyRepositoryFromApi repo = MoviesRepositoryFromApiService(
+        api: MovieApiProviderSuccess(), movieDatabase: MockMovieDatabase(),
       );
       DataState result = await repo.getData(MovieCategory.popular);
       expect(
@@ -134,8 +174,8 @@ void main() {
     test(
         'getData() from MovieRepository should return a instance of DataState with a responseState empty',
         () async {
-      MoviesRepository repo = MoviesRepository(
-        api: MovieApiProvideEmpty(),
+          MyRepositoryFromApi repo = MoviesRepositoryFromApiService(
+        api: MovieApiProvideEmpty(), movieDatabase: MockMovieDatabase(),
       );
       DataState result = await repo.getData(MovieCategory.popular);
       expect(
@@ -147,8 +187,8 @@ void main() {
     test(
         'getData() from MovieRepository should return a instance of DataState with a responseState error',
         () async {
-      MoviesRepository repo = MoviesRepository(
-        api: MovieApiProviderFailure(),
+          MyRepositoryFromApi repo = MoviesRepositoryFromApiService(
+        api: MovieApiProviderFailure(), movieDatabase: MockMovieDatabase(),
       );
       DataState result = await repo.getData(MovieCategory.popular);
       expect(
@@ -160,8 +200,8 @@ void main() {
     test(
         'getData() from GenreRepository should return a instance of DataState with a responseState success',
         () async {
-      GenreRepository repo = GenreRepository(
-        api: GenreApiProvideSuccess(),
+      GenreRepositoryFromApi repo = GenreRepositoryFromApi(
+        api: GenreApiProvideSuccess(), movieDatabase: MockMovieDatabase(),
       );
       DataState result = await repo.getData();
       expect(
@@ -173,8 +213,8 @@ void main() {
     test(
         'getData() from GenreRepository should return a instance of DataState with a responseState empty',
         () async {
-      GenreRepository repo = GenreRepository(
-        api: GenreApiProvideEmpty(),
+      GenreRepositoryFromApi repo = GenreRepositoryFromApi(
+        api: GenreApiProvideEmpty(), movieDatabase: MockMovieDatabase(),
       );
       DataState result = await repo.getData();
       expect(
@@ -186,8 +226,8 @@ void main() {
     test(
         'getData() from GenreRepository should return a instance of DataState with a responseState error',
         () async {
-      GenreRepository repo = GenreRepository(
-        api: GenreApiProvideFailure(),
+      GenreRepositoryFromApi repo = GenreRepositoryFromApi(
+        api: GenreApiProvideFailure(), movieDatabase: MockMovieDatabase(),
       );
       DataState result = await repo.getData();
       expect(

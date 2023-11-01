@@ -1,11 +1,11 @@
+
+
 import 'package:flutter/material.dart';
-import '../../../lib/src/domain/entities/movie.dart';
-import '../../../lib/src/presentation/bloc/top_rated_movies_bloc.dart';
-import '../../../lib/src/presentation/widgets/home_page_widgets/top_rated_grid_view.dart';
+import 'package:flutter_project/src/domain/entities/movie.dart';
+import 'package:flutter_project/src/presentation/widgets/home_page_widgets/top_rated_grid_view.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  final TopRatedMoviesBloc topRatedMoviesBloc = TopRatedMoviesBloc();
   final List<Movie> mockMovieList = [
     Movie(
       id: 1,
@@ -15,7 +15,7 @@ void main() {
       rate: 10,
       backDrop: '',
       poster: '',
-      genresIds: [],
+      genresIds: [], categories: [],
     ),
     Movie(
       id: 21,
@@ -25,7 +25,7 @@ void main() {
       rate: 10,
       backDrop: '',
       poster: '',
-      genresIds: [],
+      genresIds: [], categories: [],
     )
   ];
 
@@ -36,7 +36,6 @@ void main() {
       MaterialApp(
         home: TopRatedGridView(
           movies: mockMovieList,
-          topRatedMoviesBloc: topRatedMoviesBloc,
           genres: [],
         ),
       ),

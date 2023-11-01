@@ -12,7 +12,8 @@ class MyAppStyles {
   static const String appTitle = 'Cuevana but more cool';
 
   //messages for default from StreamBuilder cases
-  static const String defaultMessage = "We really don't know what happened, try reloading";
+  static const String defaultMessage =
+      "We really don't know what happened, try reloading";
   static const String emptyMessage = 'we could not find any movie.';
 
   static const TextStyle titles = TextStyle(

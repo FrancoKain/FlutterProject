@@ -3,18 +3,15 @@ import 'package:flutter_project/src/core/utils/extensions.dart';
 
 import '../../../domain/entities/genre.dart';
 import '../../../domain/entities/movie.dart';
-import '../../bloc/top_rated_movies_bloc.dart';
 import 'movie_grid_information.dart';
 
 class TopRatedGridView extends StatelessWidget {
   const TopRatedGridView({
     super.key,
     required this.movies,
-    required this.topRatedMoviesBloc,
     required this.genres,
   });
 
-  final TopRatedMoviesBloc topRatedMoviesBloc;
   final List<Movie> movies;
   final List<Genre> genres;
 

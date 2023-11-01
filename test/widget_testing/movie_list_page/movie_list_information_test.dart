@@ -14,7 +14,7 @@ void main() {
     rate: 10,
     backDrop: '',
     poster: '',
-    genresIds: [],
+    genresIds: [], categories: [],
   );
   testWidgets('Verify that we have the right amount of widgets',
       (WidgetTester tester) async {
